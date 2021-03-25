@@ -10,7 +10,7 @@ public class ChessMatch {
 	
 	public ChessMatch() {
 		board = new Board(8,8);
-		InitialSetup();
+		initialSetup();
 		
 	}
 	
@@ -31,17 +31,30 @@ public class ChessMatch {
 	
 	
 	
-	//Coloca pecas no tabuleiro para iniciar uma partida
-	private void InitialSetup() { 
+	private void initialSetup() {
+		placeNewPiece('c', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('c', 2, new Rook(board, Color.WHITE));
+        placeNewPiece('d', 2, new Rook(board, Color.WHITE));
+        placeNewPiece('e', 2, new Rook(board, Color.WHITE));
+        placeNewPiece('e', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('d', 1, new King(board, Color.WHITE));
+
+        placeNewPiece('c', 7, new Rook(board, Color.BLACK));
+        placeNewPiece('c', 8, new Rook(board, Color.BLACK));
+        placeNewPiece('d', 7, new Rook(board, Color.BLACK));
+        placeNewPiece('e', 7, new Rook(board, Color.BLACK));
+        placeNewPiece('e', 8, new Rook(board, Color.BLACK));
+        placeNewPiece('d', 8, new King(board, Color.BLACK));
+	}
+	
+	/*private void InitialSetup() { 
 		placeNewPiece('b', 6,new Rook(board,Color.WHITE));
 		placeNewPiece('e', 8,new King(board,Color.BLACK));
 		placeNewPiece('e', 1,new King(board,Color.WHITE));
 		
 		
 		//posicoes no sistema de matriz
-		/*board.placePiece(new Rook(board,Color.WHITE),new Position(2,1));
+		board.placePiece(new Rook(board,Color.WHITE),new Position(2,1));
 		board.placePiece(new King(board,Color.BLACK),new Position(0,4));
 		board.placePiece(new King(board,Color.WHITE),new Position(7,4)); */
 	}
-	
-}
