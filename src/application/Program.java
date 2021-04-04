@@ -22,17 +22,24 @@ public class Program {
 		
 		while (true) {
 			try {
+				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela está
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces());
 				System.out.println();
 				System.out.println("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
 				
+				//posicoes validas sao printadas na tela
+				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces(), possibleMoves);
+				
+				// usuario escolhe 
 				System.out.println();
 				System.out.println("Target: ");
 				ChessPosition target = UI.readChessPosition(sc);
 				
-				ChessPiece capturedPiece = chessMatch.perfomChessMove(source, target);
+				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 			}
 			catch(ChessException e){
 				System.out.println(e.getMessage());
