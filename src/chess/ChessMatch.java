@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -12,6 +15,13 @@ public class ChessMatch {
 	private int turn; 
 	private Color currentPlayer;
 
+	
+	//lista que controlam as pecas que estao no jogo e as que estao fora
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>();
+
+	
+	
 	
 	private Board board;
 	
@@ -63,9 +73,15 @@ public class ChessMatch {
 	}
 		
 	private Piece makeMove(Position source, Position target){
-		Piece p = board.removePiece(source);
-		Piece capturedPiece = board.removePiece(target);
-		board.placePiece(p, target);
+		Piece p = board.removePiece(source);  //pega a pega de acordo com a posicao
+		Piece capturedPiece = board.removePiece(target); //retira uma possivel peca capturada que esta na posicao de destino
+		board.placePiece(p, target); // coloca no destino a peca que estava na posicao de origem
+		
+		if(capturedPiece != null) { //existe peca capturada
+			piecesOnTheBoard.remove(capturedPiece); //retira peca da lista do tabuleiro
+			capturedPieces.add(capturedPiece); //coloca na lista de caputuradas
+		}
+		
 		return capturedPiece;
 	}
 	
@@ -98,9 +114,10 @@ public class ChessMatch {
 	
 	
 	
-	// passando as posicioes de acordo com xadrez
+	// passando as posicioes de acordo com mapeamento do xadrez
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		piecesOnTheBoard.add(piece); // acrescenta a peca na lista de pecas no jogo
 		
 	}
 	
