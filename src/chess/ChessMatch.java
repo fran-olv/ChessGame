@@ -7,12 +7,30 @@ import chess.pieces.King;
 import chess.pieces.Rook;
 
 public class ChessMatch {
+	
+	//variaveis que controlam o turno e qual jogador está na vez
+	private int turn; 
+	private Color currentPlayer;
 
+	
 	private Board board;
 	
 	public ChessMatch() {
 		board = new Board(8,8);
+		
+		turn = 1; // primeiro turno 
+		currentPlayer = Color.WHITE; // primeiro a jogar peca branca
+		
 		initialSetup();
+	}
+	
+	//gets das variaveis de turno
+	public int getTurn() {
+		return turn;
+	}
+	
+	public Color getCurrentPlayer(){
+		return  currentPlayer;
 	}
 	
 	public ChessPiece[][] getPieces() {
@@ -30,7 +48,6 @@ public class ChessMatch {
 		Position position = sourcePosition.toPosition();
 		validateSourcePosition(position);
 		return board.piece(position).possibleMoves();
-		
 	}
 	
 	
@@ -41,6 +58,7 @@ public class ChessMatch {
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
 		Piece capturedPiece = makeMove(source, target);
+		nextTurn(); //troca o turno e jogador
 		return (ChessPiece)capturedPiece;
 	}
 		
@@ -55,7 +73,12 @@ public class ChessMatch {
 		if(!board.thereIsAPiece(position)) {
 			throw new ChessException("There is no pice on source position");
 		}
-		if(!board.piece(position).isThereAnyPossibleMove()) {
+		// verificar se o jogador atual tem a mesma cor das pecas que ele quer mover. 
+		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()) { //necessario fazer downCast porque getColo é proriedade do chessPiece nao da classe generica Piece
+			throw new ChessException("The current chosen piece is not yours"); //se tentar mover a peca do adversário entra na excecao.
+		}
+		
+		if(!board.piece(position).isThereAnyPossibleMove()) { //verificacao dos movimentos possiveis da peca
 			throw new ChessException("There is no possibles moves for the chosen piecen");
 		}
 	}
@@ -65,6 +88,14 @@ public class ChessMatch {
 			throw new ChessException("The choosen piece can't move to target position");
 		}
 	}
+	
+	//chamado depois que tiver executado uma jogada 
+	//classe responsavel por trocar o turno = incrementando-o e trocando o jogador atual
+	private void nextTurn() {
+		turn++;	
+		currentPlayer = (currentPlayer==Color.WHITE) ? Color.BLACK : Color.WHITE;  //Se for o branco, entao recebe o Preto, se nao recebe Branco
+	}
+	
 	
 	
 	// passando as posicioes de acordo com xadrez

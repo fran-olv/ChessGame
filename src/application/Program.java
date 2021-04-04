@@ -24,7 +24,7 @@ public class Program {
 			try {
 				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela está
 				UI.clearScreen();
-				UI.printBoard(chessMatch.getPieces());
+				UI.printMatch(chessMatch);
 				System.out.println();
 				System.out.println("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
