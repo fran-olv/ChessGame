@@ -25,7 +25,7 @@ public class Program {
 		
 		while (true) {
 			try {
-				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela está
+				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela está.
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
