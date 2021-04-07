@@ -1,3 +1,4 @@
+// Bordgame ==> funcao responsavel pelo nosso tabuleiro
 package boardgame;
 
 public class Position {
