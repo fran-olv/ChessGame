@@ -27,9 +27,10 @@ public class Position {
 		this.row = row;
 		this.column = column;
 	}
-	
-	@Override
+	// printando as nossas posicoes na tela
+	@Override //funcao que subscreve ...
 	public String toString() {
+		//a linha contatenada com a coluna.
 		return row + ", " + column;
 	}
 	

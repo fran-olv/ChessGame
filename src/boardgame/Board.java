@@ -1,8 +1,11 @@
+//Boardgame === resposavel pelo nosso tabuleiro 
 package boardgame;
 
 public class Board {
+	//quantidade de linhas e colunas 
 	private int rows;
 	private int columns;
+	//matriz da nossas pecas 
 	private Piece[][] pieces;
 	
 	public Board(int rows, int columns) {
@@ -12,6 +15,7 @@ public class Board {
 		
 		this.rows = rows;
 		this.columns = columns;
+		//quantidade de linhas e colunas da nossa matriz de pecas.
 		pieces = new Piece[rows][columns];
 	}
 
@@ -24,7 +28,7 @@ public class Board {
 		return columns;
 	}
 
-	
+	//printando nosso tabuleiro para o usuario visualizar...
 	public Piece piece(int row, int column) {
 		if(!positionExists(row,column)) {
 			throw new BoardException("Position not on the board");
