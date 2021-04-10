@@ -1,3 +1,6 @@
+//nossa partida de xadrez, aqui estao as nossas regras.
+
+
 package chess;
 
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
+//nessa classe iremos encontrar a nossa dimensao do tabuleiro
 public class ChessMatch {
 	
 	//variaveis que controlam o turno e qual jogador está na vez
@@ -43,6 +47,7 @@ public class ChessMatch {
 		return  currentPlayer;
 	}
 	
+	//nosso tabuleiro sendo printado ...
 	public ChessPiece[][] getPieces() {
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for (int i=0; i<board.getRows();i++) {
