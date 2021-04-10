@@ -1,9 +1,11 @@
+//nossas pecas
 package chess;
-
+//importando as nossas classes
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
 
+//subclasse de peca
 public abstract class ChessPiece extends Piece {
 	
 	private Color color;
