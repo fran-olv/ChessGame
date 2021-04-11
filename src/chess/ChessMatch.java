@@ -150,13 +150,13 @@ public class ChessMatch {
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
         placeNewPiece('h', 8, new Rook(board, Color.BLACK));
         placeNewPiece('e', 8, new King(board, Color.BLACK));
-		placeNewPiece('a', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('b', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('c', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('d', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('f', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('g', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('h', 7, new Pawn(board, Color.WHITE));
+		placeNewPiece('a', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('b', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('c', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('d', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('f', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('g', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('h', 7, new Pawn(board, Color.BLACK));
 	}
 	
 	/*private void InitialSetup() { 
@@ -174,13 +174,13 @@ public class ChessMatch {
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
         placeNewPiece('h', 8, new Rook(board, Color.BLACK));
         placeNewPiece('e', 8, new King(board, Color.BLACK));
-		placeNewPiece('a', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('b', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('c', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('d', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('f', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('g', 7, new Pawn(board, Color.WHITE));
-        placeNewPiece('h', 7, new Pawn(board, Color.WHITE));
+		placeNewPiece('a', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('b', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('c', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('d', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('f', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('g', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('h', 7, new Pawn(board, Color.BLACK));
 		
 		
 		//posicoes no sistema de matriz
