@@ -5,9 +5,9 @@ import tabuleiro.Position;
 import chess.PecaXadrez;
 import chess.Color;
 
-public class King extends PecaXadrez{
+public class Rei extends PecaXadrez{
 
-	public King(Tabuleiro Tabuleiro, Color color) {
+	public Rei(Tabuleiro Tabuleiro, Color color) {
 		super(Tabuleiro, color);
 	}
 	

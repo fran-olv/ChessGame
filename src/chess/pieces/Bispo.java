@@ -5,9 +5,9 @@ import tabuleiro.Position;
 import chess.PecaXadrez;
 import chess.Color;
 
-public class Bishop extends PecaXadrez{
+public class Bispo extends PecaXadrez{
 
-	public Bishop(Tabuleiro Tabuleiro, Color color) {
+	public Bispo(Tabuleiro Tabuleiro, Color color) {
 		super(Tabuleiro, color);
 	}
 

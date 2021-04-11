@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Piece;
 import tabuleiro.Position;
-import chess.pieces.Bishop;
-import chess.pieces.King;
+import chess.pieces.Bispo;
+import chess.pieces.Rei;
 import chess.pieces.Knight;
 import chess.pieces.Pawn;
 import chess.pieces.Queen;
@@ -165,23 +165,23 @@ public class Partida {
 	}
 	
 	//localiza o rei de uma dada cor
-	private PecaXadrez king(Color color) {
+	private PecaXadrez Rei(Color color) {
 		List<Piece> list = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == color).collect(Collectors.toList()); //procura na lista das pecas em jogo 
 		for (Piece p : list) { 
-			if (p instanceof King) { // se a peca for uma instancia de rei. 
+			if (p instanceof Rei) { // se a peca for uma instancia de rei. 
 				return (PecaXadrez)p; //retorna a peca
 			}
 		}
-		throw new IllegalStateException("There is no " + color + " king on the Tabuleiro. Jogo acabou!");
+		throw new IllegalStateException("There is no " + color + " Rei on the Tabuleiro. Jogo acabou!");
 	}
 	
 	// testar se o jogo esta em xeque (se o rei daquela cor esta em xeque)
 	private boolean testCheck(Color color) {
-		Position kingPosition = king(color).getPosicaoXadrez().toPosition(); //posicao do rei
+		Position ReiPosition = Rei(color).getPosicaoXadrez().toPosition(); //posicao do rei
 		List<Piece> opponentPieces = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == opponent(color)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
 		for (Piece p : opponentPieces) { //varre todas as pecas adversarias 
 			boolean[][] mat = p.MovPossivel(); // se alguma delas tiver suas possibilidades de movimento passando pela casa do REI, esta em xeque
-			if (mat[kingPosition.getRow()][kingPosition.getColumn()]) {
+			if (mat[ReiPosition.getRow()][ReiPosition.getColumn()]) {
 				return true;
 			}
 		}
@@ -236,10 +236,10 @@ public class Partida {
 	private void initialSetup() { //posicionamento para fazer um xeque mais rapido
 		placeNewPiece('a', 1, new Rook(Tabuleiro, Color.WHITE));
         placeNewPiece('b', 1, new Knight(Tabuleiro, Color.WHITE));
-        placeNewPiece('c', 1, new Bishop(Tabuleiro, Color.WHITE));
+        placeNewPiece('c', 1, new Bispo(Tabuleiro, Color.WHITE));
         placeNewPiece('d', 1, new Queen(Tabuleiro, Color.WHITE));
-        placeNewPiece('e', 1, new King(Tabuleiro, Color.WHITE));
-        placeNewPiece('f', 1, new Bishop(Tabuleiro, Color.WHITE));
+        placeNewPiece('e', 1, new Rei(Tabuleiro, Color.WHITE));
+        placeNewPiece('f', 1, new Bispo(Tabuleiro, Color.WHITE));
         placeNewPiece('g', 1, new Knight(Tabuleiro, Color.WHITE));
         placeNewPiece('h', 1, new Rook(Tabuleiro, Color.WHITE));
         placeNewPiece('a', 2, new Pawn(Tabuleiro, Color.WHITE));
@@ -253,10 +253,10 @@ public class Partida {
 
         placeNewPiece('a', 8, new Rook(Tabuleiro, Color.BLACK));
         placeNewPiece('b', 8, new Knight(Tabuleiro, Color.BLACK));
-        placeNewPiece('c', 8, new Bishop(Tabuleiro, Color.BLACK));
+        placeNewPiece('c', 8, new Bispo(Tabuleiro, Color.BLACK));
         placeNewPiece('d', 8, new Queen(Tabuleiro, Color.BLACK));
-        placeNewPiece('e', 8, new King(Tabuleiro, Color.BLACK));
-        placeNewPiece('f', 8, new Bishop(Tabuleiro, Color.BLACK));
+        placeNewPiece('e', 8, new Rei(Tabuleiro, Color.BLACK));
+        placeNewPiece('f', 8, new Bispo(Tabuleiro, Color.BLACK));
         placeNewPiece('g', 8, new Knight(Tabuleiro, Color.BLACK));
         placeNewPiece('h', 8, new Rook(Tabuleiro, Color.BLACK));
         placeNewPiece('a', 7, new Pawn(Tabuleiro, Color.BLACK));
@@ -271,12 +271,12 @@ public class Partida {
 	
 	/*private void InitialSetup() { 
 		placeNewPiece('b', 6,new Rook(Tabuleiro,Color.WHITE));
-		placeNewPiece('e', 8,new King(Tabuleiro,Color.BLACK));
-		placeNewPiece('e', 1,new King(Tabuleiro,Color.WHITE));
+		placeNewPiece('e', 8,new Rei(Tabuleiro,Color.BLACK));
+		placeNewPiece('e', 1,new Rei(Tabuleiro,Color.WHITE));
 		
 		
 		//posicoes no sistema de matriz
 		Tabuleiro.placePiece(new Rook(Tabuleiro,Color.WHITE),new Position(2,1));
-		Tabuleiro.placePiece(new King(Tabuleiro,Color.BLACK),new Position(0,4));
-		Tabuleiro.placePiece(new King(Tabuleiro,Color.WHITE),new Position(7,4)); */
+		Tabuleiro.placePiece(new Rei(Tabuleiro,Color.BLACK),new Position(0,4));
+		Tabuleiro.placePiece(new Rei(Tabuleiro,Color.WHITE),new Position(7,4)); */
 	}
