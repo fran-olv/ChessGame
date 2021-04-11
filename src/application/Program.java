@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -12,7 +15,7 @@ import chess.ChessPosition;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 				////testes////
 		//Position pos = new Position(3, 5);
 		//System.out.println(pos);
@@ -22,15 +25,23 @@ public class Program {
 		Scanner sc  = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
-		
-		while (true) {
+	 
+		FileWriter arq = new FileWriter("LOG_jogadas.txt");
+		PrintWriter gravarArq = new PrintWriter(arq);
+		gravarArq.printf("Relatorio da partida%n");
+
+		while (!chessMatch.getCheckMate()) {
 			try {
-				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela está
+				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela estï¿½
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
 				System.out.println("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
+				
+				//gravando no log a origem 
+				gravarArq.printf("%c",source);
+				gravarArq.printf(" para ");
 				
 				//posicoes validas sao printadas na tela
 				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
@@ -42,14 +53,23 @@ public class Program {
 				System.out.println("Target: ");
 				ChessPosition target = UI.readChessPosition(sc);
 				
+				//gravando o destino no log 
+				gravarArq.printf("%c",target);
+				gravarArq.printf("%n");
 				
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 				
-				// se o moviemnto resulta numa captura, a peca capturada é adicionada na lista
+				// se o moviemento resulta numa captura, a peca capturada ï¿½ adicionada na lista
 				if(capturedPiece != null) {
 					captured.add(capturedPiece);
+				
 				}
+				
+				arq.close();
 			}
+			
+			
+			
 			catch(ChessException e){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
@@ -58,6 +78,8 @@ public class Program {
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}
-		}	
+		}
+		UI.clearScreen();
+		UI.printMatch(chessMatch, captured);
 	}	
 }

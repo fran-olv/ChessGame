@@ -13,7 +13,7 @@ public class King extends ChessPiece{
 	
 	@Override
 	public String toString() {
-		return "K";
+		return "R";
 	}
 
 	// fala se o rei pode se mover para determinada posicao ou nao

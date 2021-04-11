@@ -12,11 +12,8 @@ import chess.ChessPosition;
 import chess.Color;
 
 
-
-
-
 public class UI {
-	//é preiso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
+	//é preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
 	
 	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -67,8 +64,15 @@ public class UI {
 		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
 		
 		//se estivermos em xeeque
-		if (chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
 		}
 		
 	}

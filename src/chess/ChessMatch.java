@@ -59,6 +59,9 @@ public class ChessMatch {
 		return check;
 	}
 	
+	public boolean getCheckMate() {
+		return checkMate;
+	}
 	
 	//nosso tabuleiro sendo printado 
 	public ChessPiece[][] getPieces() {
@@ -93,6 +96,13 @@ public class ChessMatch {
 		}
 		//se o oponente entrou em xeque		
 		check = (testCheck(opponent(currentPlayer))) ? true : false; //verdadeiro senao falso
+		
+		if (testCheckMate(opponent(currentPlayer))) {
+			checkMate = true;
+		}
+		else {
+			nextTurn();
+		}
 		
 		nextTurn(); //troca o turno e jogador
 		return (ChessPiece)capturedPiece;
@@ -185,6 +195,32 @@ public class ChessMatch {
 		turn++;	
 		currentPlayer = (currentPlayer==Color.WHITE) ? Color.BLACK : Color.WHITE;  //Se for o branco, entao recebe o Preto, se nao recebe Branco
 	}
+	
+	//teste do cheque mate
+	private boolean testCheckMate(Color color) {
+		if (!testCheck(color)) {
+			return false;
+		}
+		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == color).collect(Collectors.toList()); //lista de pecas 
+		for (Piece p : list) {
+			boolean[][] mat = p.possibleMoves(); //faz uma matriz com os movimentos possiveis 
+			for (int i=0; i<board.getRows(); i++) {
+				for (int j=0; j<board.getColumns(); j++) {
+					if (mat[i][j]) {
+						Position source = ((ChessPiece)p).getChessPosition().toPosition();
+						Position target = new Position(i, j);
+						Piece capturedPiece = makeMove(source, target);
+						boolean testCheck = testCheck(color); //testa se ainda esta em xeque
+						undoMove(source, target, capturedPiece);
+						if (!testCheck) { 
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}	
 	
 	
 	
