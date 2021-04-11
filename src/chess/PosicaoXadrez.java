@@ -1,37 +1,37 @@
 package chess;
 
-import tabuleiro.Position;
+import tabuleiro.Posicao;
 
 public class PosicaoXadrez {
-	private char column;
-	private int row;
+	private char coluna;
+	private int linha;
 	
 	
-	public PosicaoXadrez(char column, int row) {
-		if(column < 'a' || column > 'h' || row < 1 | row > 8) {
+	public PosicaoXadrez(char coluna, int linha) {
+		if(coluna < 'a' || coluna > 'h' || linha < 1 | linha > 8) {
 			throw new ExcecaoXadrez(" Error instantiating PosicaoXadrez. Valid values are from a1 from h8. ");
 		}
-		this.column = column;
-		this.row = row;
+		this.coluna = coluna;
+		this.linha = linha;
 	}
 
 
 	public char getColumn() {
-		return column;
+		return coluna;
 	}
 
 
-	public int getRow() {
-		return row;
+	public int getLinha() {
+		return linha;
 	}
 	
-	protected Position toPosition() {
-		return new Position( 8 - row, column - 'a');
+	protected Posicao toPosition() {
+		return new Posicao( 8 - linha, coluna - 'a');
 	}
 	
 		//converte a posicao da matrix pra posicao do xadrez
-	protected static PosicaoXadrez fromPosition(Position position) {
-		return new PosicaoXadrez((char)('a' + position.getColumn()), 8 - position.getRow());
+	protected static PosicaoXadrez fromPosition(Posicao posicao) {
+		return new PosicaoXadrez((char)('a' + posicao.getColumn()), 8 - posicao.getLinha());
 		
 	}
 	
@@ -39,7 +39,7 @@ public class PosicaoXadrez {
 	
 	@Override
 	public String toString() {
-		return "" + column + row;
+		return "" + coluna + linha;
 	}
 	
 }

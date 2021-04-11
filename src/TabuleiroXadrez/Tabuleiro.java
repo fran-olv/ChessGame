@@ -3,83 +3,83 @@ package tabuleiro;
 
 public class Tabuleiro {
 	//quantidade de linhas e colunas 
-	private int rows;
-	private int columns;
+	private int linhas;
+	private int colunas;
 	//matriz da nossas pecas 
-	private Piece[][] pieces;
+	private Peca[][] pecas;
 	
-	public Tabuleiro(int rows, int columns) {
-		if(rows < 1 || columns < 1) {
-			throw new TabuleiroException("Error creating Tabuleiro: there must be at least 1 row and 1 column");
+	public Tabuleiro(int linhas, int colunas) {
+		if(linhas < 1 || colunas < 1) {
+			throw new TabuleiroException("Erro ao criar o Tabuleiro: necessita ter pelo menos 1 linha e 1 coluna");
 		}
 		
-		this.rows = rows;
-		this.columns = columns;
+		this.linhas = linhas;
+		this.colunas = colunas;
 		//quantidade de linhas e colunas da nossa matriz de pecas.
-		pieces = new Piece[rows][columns];
+		pecas = new Peca[linhas][colunas];
 	}
 
-	public int getRows() {
-		return rows;
+	public int getlinhas() {
+		return linhas;
 	}
 
 
-	public int getColumns() {
-		return columns;
+	public int getcolunas() {
+		return colunas;
 	}
 
 	//printando nosso tabuleiro para o usuario visualizar...
-	public Piece piece(int row, int column) {
-		if(!positionExists(row,column)) {
-			throw new TabuleiroException("Position not on the Tabuleiro");
+	public Peca peca(int linha, int coluna) {
+		if(!positionExists(linha,coluna)) {
+			throw new TabuleiroException("Posição não existe.");
 		}
 		
-		return pieces[row][column];
+		return pecas[linha][coluna];
 	}	
 		
-	public Piece piece(Position position) {
-		if(!positionExists(position)) {
-			throw new TabuleiroException("Position not on the Tabuleiro");
+	public Peca peca(Posicao posicao) {
+		if(!positionExists(posicao)) {
+			throw new TabuleiroException("Posicao not on the Tabuleiro");
 		}
 		
-		return pieces[position.getRow()][position.getColumn()];
+		return pecas[posicao.getLinha()][posicao.getColumn()];
 	}	
 	
 	//posiciona uma pe�a no tabuleiro
-	public void placePiece(Piece piece, Position position) {
-		if(thereIsAPiece(position)) {
-			throw new TabuleiroException("There is already a piece on the position " + position);
+	public void placePiece(Peca peca, Posicao posicao) {
+		if(thereIsAPiece(posicao)) {
+			throw new TabuleiroException("There is already a peca on the posicao " + posicao);
 		}
-		pieces[position.getRow()][position.getColumn()] = piece;
-		piece.position = position;
+		pecas[posicao.getLinha()][posicao.getColumn()] = peca;
+		peca.posicao = posicao;
 	}
 	
-	public Piece removePiece(Position position) {
-		if (!positionExists(position)) {
-			throw new TabuleiroException("Position not on the Tabuleiro");
+	public Peca removePiece(Posicao posicao) {
+		if (!positionExists(posicao)) {
+			throw new TabuleiroException("Posicao not on the Tabuleiro");
 		}
-		if (piece(position) == null){
+		if (peca(posicao) == null){
 			return null;
 		}
-		Piece aux = piece(position);
-			aux.position = null;
-			pieces[position.getRow()][position.getColumn()] = null;
+		Peca aux = peca(posicao);
+			aux.posicao = null;
+			pecas[posicao.getLinha()][posicao.getColumn()] = null;
 			return aux;
 	}
 		
-	public boolean positionExists(int row, int column) { 
-		return row >= 0 && row < rows && column >= 0 && column < columns;
+	public boolean positionExists(int linha, int coluna) { 
+		return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas;
 	}
 	
-	public boolean positionExists(Position position){
-		return positionExists(position.getRow(), position.getColumn());
+	public boolean positionExists(Posicao posicao){
+		return positionExists(posicao.getLinha(), posicao.getColumn());
 	}
 	
-	public boolean thereIsAPiece(Position position) {
-		if(!positionExists(position)) {
-			throw new TabuleiroException("Position not on the Tabuleiro");
+	public boolean thereIsAPiece(Posicao posicao) {
+		if(!positionExists(posicao)) {
+			throw new TabuleiroException("Posicao not on the Tabuleiro");
 		}
-		return piece(position) != null;
+		return peca(posicao) != null;
 	}
 	
 }

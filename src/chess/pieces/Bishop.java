@@ -1,7 +1,7 @@
-package chess.pieces;
+package chess.pecas;
 
 import tabuleiro.Tabuleiro;
-import tabuleiro.Position;
+import tabuleiro.Posicao;
 import chess.PecaXadrez;
 import chess.Color;
 
@@ -19,49 +19,49 @@ public class Bishop extends PecaXadrez{
 	@Override
 	public boolean[][] MovPossivel() {
 		//Declacao da matriz
-		boolean [][] mat = new boolean[getTabuleiro().getRows()][getTabuleiro().getColumns()];
+		boolean [][] mat = new boolean[getTabuleiro().getlinhas()][getTabuleiro().getcolunas()];
 		
 		
-		Position p = new Position(0,0);
+		Posicao p = new Posicao(0,0);
 		
 		//Movimento para noroeste	
-		p.setValues(position.getRow() - 1 , position.getColumn() - 1);
+		p.setValues(posicao.getLinha() - 1 , posicao.getColumn() - 1);
 		while(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //marcando a todas as posicoes que pode se mover
-			mat[p.getRow()][p.getColumn()] = true;
-			p.setValues(p.getRow() -1,p.getColumn() - 1);
+			mat[p.getLinha()][p.getColumn()] = true;
+			p.setValues(p.getLinha() -1,p.getColumn() - 1);
 		}
 		if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
-			mat[p.getRow()][p.getColumn()] = true;
+			mat[p.getLinha()][p.getColumn()] = true;
 		}
 		
 		//Movimento para nordeste		
-		p.setValues(position.getRow() -1, position.getColumn() + 1);
+		p.setValues(posicao.getLinha() -1, posicao.getColumn() + 1);
 		while(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //marcando a todas as posicoes que pode se mover
-			mat[p.getRow()][p.getColumn()] = true;
-			p.setValues(p.getRow() -1, p.getColumn() + 1);
+			mat[p.getLinha()][p.getColumn()] = true;
+			p.setValues(p.getLinha() -1, p.getColumn() + 1);
 		}
 		if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
-			mat[p.getRow()][p.getColumn()] = true;
+			mat[p.getLinha()][p.getColumn()] = true;
 		}
 				
 		//Movimento para sudeste		
-		p.setValues(position.getRow(), position.getColumn() + 1);
+		p.setValues(posicao.getLinha(), posicao.getColumn() + 1);
 		while(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //marcando a todas as posicoes que pode se mover
-			mat[p.getRow()][p.getColumn()] = true;
-			p.setValues(p.getRow() + 1, p.getColumn() +1);
+			mat[p.getLinha()][p.getColumn()] = true;
+			p.setValues(p.getLinha() + 1, p.getColumn() +1);
 		}
 		if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
-			mat[p.getRow()][p.getColumn()] = true;
+			mat[p.getLinha()][p.getColumn()] = true;
 		}
 		
 		//Movimento para sudoeste		
-				p.setValues(position.getRow() + 1 , position.getColumn() );
+				p.setValues(posicao.getLinha() + 1 , posicao.getColumn() );
 				while(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //marcando a todas as posicoes que pode se mover
-					mat[p.getRow()][p.getColumn()] = true;
-					p.setValues(p.getRow() + 1, p.getColumn() -1);
+					mat[p.getLinha()][p.getColumn()] = true;
+					p.setValues(p.getLinha() + 1, p.getColumn() -1);
 				}
 				if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
-					mat[p.getRow()][p.getColumn()] = true;
+					mat[p.getLinha()][p.getColumn()] = true;
 				}
 		return mat;
 	}
