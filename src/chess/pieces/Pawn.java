@@ -6,8 +6,10 @@ import chess.ChessPiece;
 import chess.Color;
 
 public class Pawn extends ChessPiece {
+
 	public Pawn(Board board, Color color) {
 		super(board, color);
+		
 	}
 
 	@Override
@@ -17,7 +19,7 @@ public class Pawn extends ChessPiece {
 		
 		Position p = new Position(0,0);
 		
-		//regraDoPeaoBranco = se move linha para cima ou seja na mtriz é -1 
+		//regraDoPeaoBranco = se move linha para cima ou seja na mtriz ï¿½ -1 
 		if(getColor() == Color.WHITE) {
 			 //1 posicao para frente
 			p.setValues(position.getRow()- 1, position.getColumn());
@@ -35,14 +37,14 @@ public class Pawn extends ChessPiece {
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
-			//teste do mov diagonal esquerda quando tiver peça adversaria
+			//teste do mov diagonal esquerda quando tiver peï¿½a adversaria
 			p.setValues(position.getRow() - 1, position.getColumn() - 1 );
 			//testa para ver se o peao pode mover 
 			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
-			//teste do mov diagonal direita quando tiver peça adversaria
+			//teste do mov diagonal direita quando tiver peï¿½a adversaria
 			p.setValues(position.getRow() - 1, position.getColumn() + 1 );
 			//testa para ver se o peao pode mover 
 			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
@@ -50,7 +52,7 @@ public class Pawn extends ChessPiece {
 			}
 			
 		}
-		else { //se nao é branca é preta. OBS: o posicao ROW vai ser + 1 
+		else { //se nao ï¿½ branca ï¿½ preta. OBS: o posicao ROW vai ser + 1 
 			
 			//1 posicao para baixo
 			p.setValues(position.getRow() + 1, position.getColumn());
@@ -68,14 +70,14 @@ public class Pawn extends ChessPiece {
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
-			//teste do mov diagonal esquerda quando tiver peça adversaria
+			//teste do mov diagonal esquerda quando tiver peï¿½a adversaria
 			p.setValues(position.getRow() + 1, position.getColumn() - 1 );
 			//testa para ver se o peao pode mover 
 			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
-			//teste do mov diagonal direita quando tiver peça adversaria
+			//teste do mov diagonal direita quando tiver peï¿½a adversaria
 			p.setValues(position.getRow() + 1, position.getColumn() + 1 );
 			//testa para ver se o peao pode mover 
 			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
