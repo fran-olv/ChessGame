@@ -12,10 +12,10 @@ import tabuleiro.Piece;
 import tabuleiro.Position;
 import chess.pieces.Bispo;
 import chess.pieces.Rei;
-import chess.pieces.Knight;
-import chess.pieces.Pawn;
-import chess.pieces.Queen;
-import chess.pieces.Rook;
+import chess.pieces.Cavalo;
+import chess.pieces.Peao;
+import chess.pieces.Rainha;
+import chess.pieces.Torre;
 
 //nessa classe iremos encontrar a nossa dimensao do tabuleiro
 public class Partida {
@@ -234,49 +234,49 @@ public class Partida {
 	
 	
 	private void initialSetup() { //posicionamento para fazer um xeque mais rapido
-		placeNewPiece('a', 1, new Rook(Tabuleiro, Color.WHITE));
-        placeNewPiece('b', 1, new Knight(Tabuleiro, Color.WHITE));
+		placeNewPiece('a', 1, new Torre(Tabuleiro, Color.WHITE));
+        placeNewPiece('b', 1, new Cavalo(Tabuleiro, Color.WHITE));
         placeNewPiece('c', 1, new Bispo(Tabuleiro, Color.WHITE));
-        placeNewPiece('d', 1, new Queen(Tabuleiro, Color.WHITE));
+        placeNewPiece('d', 1, new Rainha(Tabuleiro, Color.WHITE));
         placeNewPiece('e', 1, new Rei(Tabuleiro, Color.WHITE));
         placeNewPiece('f', 1, new Bispo(Tabuleiro, Color.WHITE));
-        placeNewPiece('g', 1, new Knight(Tabuleiro, Color.WHITE));
-        placeNewPiece('h', 1, new Rook(Tabuleiro, Color.WHITE));
-        placeNewPiece('a', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('b', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('c', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('d', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('e', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('f', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('g', 2, new Pawn(Tabuleiro, Color.WHITE));
-        placeNewPiece('h', 2, new Pawn(Tabuleiro, Color.WHITE));
+        placeNewPiece('g', 1, new Cavalo(Tabuleiro, Color.WHITE));
+        placeNewPiece('h', 1, new Torre(Tabuleiro, Color.WHITE));
+        placeNewPiece('a', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('b', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('c', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('d', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('e', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('f', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('g', 2, new Peao(Tabuleiro, Color.WHITE));
+        placeNewPiece('h', 2, new Peao(Tabuleiro, Color.WHITE));
 
-        placeNewPiece('a', 8, new Rook(Tabuleiro, Color.BLACK));
-        placeNewPiece('b', 8, new Knight(Tabuleiro, Color.BLACK));
+        placeNewPiece('a', 8, new Torre(Tabuleiro, Color.BLACK));
+        placeNewPiece('b', 8, new Cavalo(Tabuleiro, Color.BLACK));
         placeNewPiece('c', 8, new Bispo(Tabuleiro, Color.BLACK));
-        placeNewPiece('d', 8, new Queen(Tabuleiro, Color.BLACK));
+        placeNewPiece('d', 8, new Rainha(Tabuleiro, Color.BLACK));
         placeNewPiece('e', 8, new Rei(Tabuleiro, Color.BLACK));
         placeNewPiece('f', 8, new Bispo(Tabuleiro, Color.BLACK));
-        placeNewPiece('g', 8, new Knight(Tabuleiro, Color.BLACK));
-        placeNewPiece('h', 8, new Rook(Tabuleiro, Color.BLACK));
-        placeNewPiece('a', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('b', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('c', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('d', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('e', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('f', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('g', 7, new Pawn(Tabuleiro, Color.BLACK));
-        placeNewPiece('h', 7, new Pawn(Tabuleiro, Color.BLACK));
+        placeNewPiece('g', 8, new Cavalo(Tabuleiro, Color.BLACK));
+        placeNewPiece('h', 8, new Torre(Tabuleiro, Color.BLACK));
+        placeNewPiece('a', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('b', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('c', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('d', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('e', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('f', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('g', 7, new Peao(Tabuleiro, Color.BLACK));
+        placeNewPiece('h', 7, new Peao(Tabuleiro, Color.BLACK));
 	}
 	
 	/*private void InitialSetup() { 
-		placeNewPiece('b', 6,new Rook(Tabuleiro,Color.WHITE));
+		placeNewPiece('b', 6,new Torre(Tabuleiro,Color.WHITE));
 		placeNewPiece('e', 8,new Rei(Tabuleiro,Color.BLACK));
 		placeNewPiece('e', 1,new Rei(Tabuleiro,Color.WHITE));
 		
 		
 		//posicoes no sistema de matriz
-		Tabuleiro.placePiece(new Rook(Tabuleiro,Color.WHITE),new Position(2,1));
+		Tabuleiro.placePiece(new Torre(Tabuleiro,Color.WHITE),new Position(2,1));
 		Tabuleiro.placePiece(new Rei(Tabuleiro,Color.BLACK),new Position(0,4));
 		Tabuleiro.placePiece(new Rei(Tabuleiro,Color.WHITE),new Position(7,4)); */
 	}
