@@ -20,7 +20,7 @@ public class Programa {
 		//Position pos = new Position(3, 5);
 		//System.out.println(pos);
 		
-		//Board board = new Board(8,8);
+		//Tabuleiro Tabuleiro = new Tabuleiro(8,8);
 		
 		//Scanner sc  = new Scanner(System.in);
 		//Partida Partida = new Partida();
@@ -47,7 +47,7 @@ public class Programa {
 				//posicoes validas sao printadas na tela
 				boolean [][] MovPossivel = Partida.MovPossivel(source);
 				InterfaceUsario.clearScreen();
-				InterfaceUsario.printBoard(Partida.getPieces(), MovPossivel);
+				InterfaceUsario.printTabuleiro(Partida.getPieces(), MovPossivel);
 				
 				// usuario escolhe 
 				System.out.println();

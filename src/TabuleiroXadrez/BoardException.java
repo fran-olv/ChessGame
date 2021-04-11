@@ -1,9 +1,9 @@
 // Bordgame ==> funcao responsavel pelo nosso tabuleiro
-package boardgame;
+package tabuleiro;
 
-public class BoardException extends RuntimeException {
+public class TabuleiroException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
-	public BoardException(String msg) {
+	public TabuleiroException(String msg) {
 		super(msg);
 	}
 

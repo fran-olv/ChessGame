@@ -1,9 +1,9 @@
 //nossas pecas
 package chess;
 //importando as nossas classes
-import boardgame.Board;
-import boardgame.Piece;
-import boardgame.Position;
+import tabuleiro.Tabuleiro;
+import tabuleiro.Piece;
+import tabuleiro.Position;
 
 //subclasse de peca
 public abstract class PecaXadrez extends Piece {
@@ -12,8 +12,8 @@ public abstract class PecaXadrez extends Piece {
 	private int moveCount; //iniciado com zero por padrao
 	
 	
-	public PecaXadrez(Board board, Color color) {
-		super(board);
+	public PecaXadrez(Tabuleiro Tabuleiro, Color color) {
+		super(Tabuleiro);
 		this.color = color;
 	}
 
@@ -39,7 +39,7 @@ public abstract class PecaXadrez extends Piece {
 	}
 	
 	protected boolean IsThereOpponentPiece(Position position) {
-		PecaXadrez p = (PecaXadrez)getBoard().piece(position);
+		PecaXadrez p = (PecaXadrez)getTabuleiro().piece(position);
 		return p != null && p.getColor() != color;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
 	}
 }

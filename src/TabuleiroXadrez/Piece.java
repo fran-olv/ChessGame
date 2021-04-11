@@ -1,20 +1,20 @@
 // Bordgame ==> funcao responsavel pelo nosso tabuleiro
-package boardgame;
+package tabuleiro;
 
 public abstract class Piece {
 	//posicao do nosso tabuleiro
 	protected Position position;// protegida
-	private Board board;
+	private Tabuleiro Tabuleiro;
 	
 	//a posicao nula
-	public Piece(Board board) {
-		this.board = board;
+	public Piece(Tabuleiro Tabuleiro) {
+		this.Tabuleiro = Tabuleiro;
 		position = null; //peca recem criada nao tem posicao
 		
 	}
 	//o tabuleiro so vai ser acessado pelas classe das pecas e tabuleiro
-	protected Board getBoard() {
-		return board;
+	protected Tabuleiro getTabuleiro() {
+		return Tabuleiro;
 	}
 	
 	public abstract boolean[][] MovPossivel();

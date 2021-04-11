@@ -67,7 +67,7 @@ public class InterfaceUsario {
 	
 	// printar a partida com o jogador da vez e o turno, e as pecas que foram capturadas
 	public static void printMatch(Partida Partida, List<PecaXadrez> capturado) {
-		printBoard(Partida.getPieces());
+		printTabuleiro(Partida.getPieces());
 		System.out.println();
 		printcapturadoPieces(capturado);
 		System.out.println("");
@@ -90,7 +90,7 @@ public class InterfaceUsario {
 	
 	
 	//Printa na tela o tabuleiro de xadrez onde as colunas sao mapeadas letras e as linhas por numeros
-	public static void printBoard(PecaXadrez[][] pieces) {
+	public static void printTabuleiro(PecaXadrez[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
@@ -102,7 +102,7 @@ public class InterfaceUsario {
 	}
 
 	//printa durante a moviemntacao de uma peca os possiveis destinos que essa peca pode ter.
-	public static void printBoard(PecaXadrez[][] pieces, boolean[][] MovPossivel) {
+	public static void printTabuleiro(PecaXadrez[][] pieces, boolean[][] MovPossivel) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {

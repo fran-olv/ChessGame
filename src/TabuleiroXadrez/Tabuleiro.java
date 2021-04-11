@@ -1,16 +1,16 @@
-//Boardgame === resposavel pelo nosso tabuleiro 
-package boardgame;
+//tabuleiro === resposavel pelo nosso tabuleiro 
+package tabuleiro;
 
-public class Board {
+public class Tabuleiro {
 	//quantidade de linhas e colunas 
 	private int rows;
 	private int columns;
 	//matriz da nossas pecas 
 	private Piece[][] pieces;
 	
-	public Board(int rows, int columns) {
+	public Tabuleiro(int rows, int columns) {
 		if(rows < 1 || columns < 1) {
-			throw new BoardException("Error creating board: there must be at least 1 row and 1 column");
+			throw new TabuleiroException("Error creating Tabuleiro: there must be at least 1 row and 1 column");
 		}
 		
 		this.rows = rows;
@@ -31,7 +31,7 @@ public class Board {
 	//printando nosso tabuleiro para o usuario visualizar...
 	public Piece piece(int row, int column) {
 		if(!positionExists(row,column)) {
-			throw new BoardException("Position not on the board");
+			throw new TabuleiroException("Position not on the Tabuleiro");
 		}
 		
 		return pieces[row][column];
@@ -39,16 +39,16 @@ public class Board {
 		
 	public Piece piece(Position position) {
 		if(!positionExists(position)) {
-			throw new BoardException("Position not on the board");
+			throw new TabuleiroException("Position not on the Tabuleiro");
 		}
 		
 		return pieces[position.getRow()][position.getColumn()];
 	}	
 	
-	//posiciona uma peça no tabuleiro
+	//posiciona uma peï¿½a no tabuleiro
 	public void placePiece(Piece piece, Position position) {
 		if(thereIsAPiece(position)) {
-			throw new BoardException("There is already a piece on the position " + position);
+			throw new TabuleiroException("There is already a piece on the position " + position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
@@ -56,7 +56,7 @@ public class Board {
 	
 	public Piece removePiece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Position not on the board");
+			throw new TabuleiroException("Position not on the Tabuleiro");
 		}
 		if (piece(position) == null){
 			return null;
@@ -77,7 +77,7 @@ public class Board {
 	
 	public boolean thereIsAPiece(Position position) {
 		if(!positionExists(position)) {
-			throw new BoardException("Position not on the board");
+			throw new TabuleiroException("Position not on the Tabuleiro");
 		}
 		return piece(position) != null;
 	}

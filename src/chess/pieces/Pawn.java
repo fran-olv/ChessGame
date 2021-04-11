@@ -1,21 +1,21 @@
 package chess.pieces;
 
-import boardgame.Board;
-import boardgame.Position;
+import tabuleiro.Tabuleiro;
+import tabuleiro.Position;
 import chess.PecaXadrez;
 import chess.Color;
 
 public class Pawn extends PecaXadrez {
 
-	public Pawn(Board board, Color color) {
-		super(board, color);
+	public Pawn(Tabuleiro Tabuleiro, Color color) {
+		super(Tabuleiro, color);
 		
 	}
 
 	@Override
 	public boolean[][] MovPossivel() {
 		
-		boolean [][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		boolean [][] mat = new boolean[getTabuleiro().getRows()][getTabuleiro().getColumns()];
 		
 		Position p = new Position(0,0);
 		
@@ -24,7 +24,7 @@ public class Pawn extends PecaXadrez {
 			 //1 posicao para frente
 			p.setValues(position.getRow()- 1, position.getColumn());
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { //existe a posicao e esta vazia
+			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //existe a posicao e esta vazia
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			//peao se movendo 2 linhas para frente
@@ -33,21 +33,21 @@ public class Pawn extends PecaXadrez {
 			
 			
 			//testa para ver se o peao pode mover 2 casas pra frente 
-			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
+			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p) && getTabuleiro().positionExists(p2) && !getTabuleiro().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
 			//teste do mov diagonal esquerda quando tiver pe�a adversaria
 			p.setValues(position.getRow() - 1, position.getColumn() - 1 );
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
 			//teste do mov diagonal direita quando tiver pe�a adversaria
 			p.setValues(position.getRow() - 1, position.getColumn() + 1 );
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
@@ -57,7 +57,7 @@ public class Pawn extends PecaXadrez {
 			//1 posicao para baixo
 			p.setValues(position.getRow() + 1, position.getColumn());
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { //existe a posicao e esta vazia
+			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //existe a posicao e esta vazia
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			//peao se movendo 2 linhas para baixo
@@ -66,21 +66,21 @@ public class Pawn extends PecaXadrez {
 			
 			
 			//testa para ver se o peao pode mover 2 casas parra baixo
-			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
+			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p) && getTabuleiro().positionExists(p2) && !getTabuleiro().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
 			//teste do mov diagonal esquerda quando tiver pe�a adversaria
 			p.setValues(position.getRow() + 1, position.getColumn() - 1 );
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 			
 			//teste do mov diagonal direita quando tiver pe�a adversaria
 			p.setValues(position.getRow() + 1, position.getColumn() + 1 );
 			//testa para ver se o peao pode mover 
-			if(getBoard().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getRow()][p.getColumn()] = true;
 			}
 		}
