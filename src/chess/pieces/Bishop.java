@@ -2,10 +2,10 @@ package chess.pieces;
 
 import boardgame.Board;
 import boardgame.Position;
-import chess.ChessPiece;
+import chess.PecaXadrez;
 import chess.Color;
 
-public class Bishop extends ChessPiece{
+public class Bishop extends PecaXadrez{
 
 	public Bishop(Board board, Color color) {
 		super(board, color);
@@ -17,7 +17,7 @@ public class Bishop extends ChessPiece{
 	}
 
 	@Override
-	public boolean[][] possibleMoves() {
+	public boolean[][] MovPossivel() {
 		//Declacao da matriz
 		boolean [][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		

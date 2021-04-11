@@ -2,10 +2,10 @@ package chess.pieces;
 
 import boardgame.Board;
 import boardgame.Position;
-import chess.ChessPiece;
+import chess.PecaXadrez;
 import chess.Color;
 
-public class Pawn extends ChessPiece {
+public class Pawn extends PecaXadrez {
 
 	public Pawn(Board board, Color color) {
 		super(board, color);
@@ -13,7 +13,7 @@ public class Pawn extends ChessPiece {
 	}
 
 	@Override
-	public boolean[][] possibleMoves() {
+	public boolean[][] MovPossivel() {
 		
 		boolean [][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		

@@ -6,13 +6,13 @@ import boardgame.Piece;
 import boardgame.Position;
 
 //subclasse de peca
-public abstract class ChessPiece extends Piece {
+public abstract class PecaXadrez extends Piece {
 	
 	private Color color;
 	private int moveCount; //iniciado com zero por padrao
 	
 	
-	public ChessPiece(Board board, Color color) {
+	public PecaXadrez(Board board, Color color) {
 		super(board);
 		this.color = color;
 	}
@@ -21,9 +21,9 @@ public abstract class ChessPiece extends Piece {
 		return color;
 	}
 	
-	//obtendo a posicao da peca de xadrex 
-	public ChessPosition getChessPosition() {
-		return ChessPosition.fromPosition(position);
+	//obtendo a posicao da peca de Xadrez 
+	public PosicaoXadrez getPosicaoXadrez() {
+		return PosicaoXadrez.fromPosition(position);
 	}
 	
 	public int getMoveCount() {
@@ -39,7 +39,7 @@ public abstract class ChessPiece extends Piece {
 	}
 	
 	protected boolean IsThereOpponentPiece(Position position) {
-		ChessPiece p = (ChessPiece)getBoard().piece(position);
-		return p != null && p.getColor() != color;  //teste se a cor da peca que esta na posicao é igual (minha) ou diferente(oponente)
+		PecaXadrez p = (PecaXadrez)getBoard().piece(position);
+		return p != null && p.getColor() != color;  //teste se a cor da peca que esta na posicao ï¿½ igual (minha) ou diferente(oponente)
 	}
 }

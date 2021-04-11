@@ -18,7 +18,7 @@ import chess.pieces.Queen;
 import chess.pieces.Rook;
 
 //nessa classe iremos encontrar a nossa dimensao do tabuleiro
-public class ChessMatch {
+public class Partida {
 	
 	//variaveis que controlam o turno e qual jogador est� na vez
 	private int turn; 
@@ -30,12 +30,12 @@ public class ChessMatch {
 	
 	//lista que controlam as pecas que estao no jogo e as que estao fora
 	private List<Piece> piecesOnTheBoard = new ArrayList<>();
-	private List<Piece> capturedPieces = new ArrayList<>();
+	private List<Piece> capturadoPieces = new ArrayList<>();
 
 		
 	private Board board;
 	
-	public ChessMatch() {
+	public Partida() {
 		board = new Board(8,8);
 		
 		turn = 1; // primeiro turno 
@@ -64,35 +64,35 @@ public class ChessMatch {
 	}
 	
 	//nosso tabuleiro sendo printado 
-	public ChessPiece[][] getPieces() {
-		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
+	public PecaXadrez[][] getPieces() {
+		PecaXadrez[][] mat = new PecaXadrez[board.getRows()][board.getColumns()];
 		for (int i=0; i<board.getRows();i++) {
 			for(int j=0; j<board.getColumns();j++) {
-				mat[i][j] = (ChessPiece) board.piece(i, j);
+				mat[i][j] = (PecaXadrez) board.piece(i, j);
 			}
 		}
 		return mat; 
 	}
 	
 	//classe que retorna uma matriz de booleano com os possiveis movimentos da pe�a
-	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+	public boolean[][] MovPossivel(PosicaoXadrez sourcePosition){
 		Position position = sourcePosition.toPosition();
 		validateSourcePosition(position);
-		return board.piece(position).possibleMoves();
+		return board.piece(position).MovPossivel();
 	}
 	
 	
 	// movimentando as pecas
-		public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		public PecaXadrez performChessMove(PosicaoXadrez sourcePosition, PosicaoXadrez targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
-		Piece capturedPiece = makeMove(source, target);
+		Piece capturadoPiece = makeMove(source, target);
 	
 		
 		if ( testCheck(currentPlayer) ) {  //se o jogador entrar em xeque
-			undoMove(source, target, capturedPiece);
-			throw new ChessException("You can't put yourself in check");
+			undoMove(source, target, capturadoPiece);
+			throw new ExcecaoXadrez("You can't put yourself in check");
 		}
 		//se o oponente entrou em xeque		
 		check = (testCheck(opponent(currentPlayer))) ? true : false; //verdadeiro senao falso
@@ -105,57 +105,57 @@ public class ChessMatch {
 		}
 		
 		nextTurn(); //troca o turno e jogador
-		return (ChessPiece)capturedPiece;
+		return (PecaXadrez)capturadoPiece;
 		
 		}
 	
 	
 	private Piece makeMove(Position source, Position target){
-		ChessPiece p = (ChessPiece)board.removePiece(source);  //pega a peca de acordo com a posicao
+		PecaXadrez p = (PecaXadrez)board.removePiece(source);  //pega a peca de acordo com a posicao
 		p.increaseMoveCount(); 
-		Piece capturedPiece = board.removePiece(target); //retira uma possivel peca capturada que esta na posicao de destino
+		Piece capturadoPiece = board.removePiece(target); //retira uma possivel peca capturada que esta na posicao de destino
 		board.placePiece(p, target); // coloca no destino a peca que estava na posicao de origem
 		
-		if(capturedPiece != null) { //existe peca capturada
-			piecesOnTheBoard.remove(capturedPiece); //retira peca da lista do tabuleiro
-			capturedPieces.add(capturedPiece); //coloca na lista de caputuradas
+		if(capturadoPiece != null) { //existe peca capturada
+			piecesOnTheBoard.remove(capturadoPiece); //retira peca da lista do tabuleiro
+			capturadoPieces.add(capturadoPiece); //coloca na lista de caputuradas
 		}
 		
-		return capturedPiece;
+		return capturadoPiece;
 	}
 	
 	//desfaz a jogado. Caso entre em cheque sem querer
-	private void undoMove(Position source, Position target, Piece capturedPiece) {
-		ChessPiece p = (ChessPiece)board.removePiece(target);
+	private void undoMove(Position source, Position target, Piece capturadoPiece) {
+		PecaXadrez p = (PecaXadrez)board.removePiece(target);
 		p.decreaseMoveCount();
 
 		board.placePiece(p, source);
 		
-		if (capturedPiece != null) {
-			board.placePiece(capturedPiece, target);
-			capturedPieces.remove(capturedPiece);
-			piecesOnTheBoard.add(capturedPiece);
+		if (capturadoPiece != null) {
+			board.placePiece(capturadoPiece, target);
+			capturadoPieces.remove(capturadoPiece);
+			piecesOnTheBoard.add(capturadoPiece);
 			}		
 		}
 	
 	
 	private void validateSourcePosition(Position position){
 		if(!board.thereIsAPiece(position)) {
-			throw new ChessException("There is no pice on source position");
+			throw new ExcecaoXadrez("There is no pice on source position");
 		}
 		// verificar se o jogador atual tem a mesma cor das pecas que ele quer mover. 
-		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()) { //necessario fazer downCast porque getColo � proriedade do chessPiece nao da classe generica Piece
-			throw new ChessException("The current chosen piece is not yours"); //se tentar mover a peca do advers�rio entra na excecao.
+		if(currentPlayer != ((PecaXadrez)board.piece(position)).getColor()) { //necessario fazer downCast porque getColo � proriedade do PecaXadrez nao da classe generica Piece
+			throw new ExcecaoXadrez("The current chosen piece is not yours"); //se tentar mover a peca do advers�rio entra na excecao.
 		}
 		
 		if(!board.piece(position).isThereAnyPossibleMove()) { //verificacao dos movimentos possiveis da peca
-			throw new ChessException("There is no possibles moves for the chosen piecen");
+			throw new ExcecaoXadrez("There is no possibles moves for the chosen piecen");
 		}
 	}
 	
 	private void validateTargetPosition(Position source, Position target){
 		if(!board.piece(source).possibleMove(target)) {
-			throw new ChessException("The choosen piece can't move to target position");
+			throw new ExcecaoXadrez("The choosen piece can't move to target position");
 		}
 	}
 	
@@ -165,11 +165,11 @@ public class ChessMatch {
 	}
 	
 	//localiza o rei de uma dada cor
-	private ChessPiece king(Color color) {
-		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == color).collect(Collectors.toList()); //procura na lista das pecas em jogo 
+	private PecaXadrez king(Color color) {
+		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((PecaXadrez)x).getColor() == color).collect(Collectors.toList()); //procura na lista das pecas em jogo 
 		for (Piece p : list) { 
 			if (p instanceof King) { // se a peca for uma instancia de rei. 
-				return (ChessPiece)p; //retorna a peca
+				return (PecaXadrez)p; //retorna a peca
 			}
 		}
 		throw new IllegalStateException("There is no " + color + " king on the board. Jogo acabou!");
@@ -177,10 +177,10 @@ public class ChessMatch {
 	
 	// testar se o jogo esta em xeque (se o rei daquela cor esta em xeque)
 	private boolean testCheck(Color color) {
-		Position kingPosition = king(color).getChessPosition().toPosition(); //posicao do rei
-		List<Piece> opponentPieces = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == opponent(color)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
+		Position kingPosition = king(color).getPosicaoXadrez().toPosition(); //posicao do rei
+		List<Piece> opponentPieces = piecesOnTheBoard.stream().filter(x -> ((PecaXadrez)x).getColor() == opponent(color)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
 		for (Piece p : opponentPieces) { //varre todas as pecas adversarias 
-			boolean[][] mat = p.possibleMoves(); // se alguma delas tiver suas possibilidades de movimento passando pela casa do REI, esta em xeque
+			boolean[][] mat = p.MovPossivel(); // se alguma delas tiver suas possibilidades de movimento passando pela casa do REI, esta em xeque
 			if (mat[kingPosition.getRow()][kingPosition.getColumn()]) {
 				return true;
 			}
@@ -201,17 +201,17 @@ public class ChessMatch {
 		if (!testCheck(color)) {
 			return false;
 		}
-		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == color).collect(Collectors.toList()); //lista de pecas 
+		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((PecaXadrez)x).getColor() == color).collect(Collectors.toList()); //lista de pecas 
 		for (Piece p : list) {
-			boolean[][] mat = p.possibleMoves(); //faz uma matriz com os movimentos possiveis 
+			boolean[][] mat = p.MovPossivel(); //faz uma matriz com os movimentos possiveis 
 			for (int i=0; i<board.getRows(); i++) {
 				for (int j=0; j<board.getColumns(); j++) {
 					if (mat[i][j]) {
-						Position source = ((ChessPiece)p).getChessPosition().toPosition();
+						Position source = ((PecaXadrez)p).getPosicaoXadrez().toPosition();
 						Position target = new Position(i, j);
-						Piece capturedPiece = makeMove(source, target);
+						Piece capturadoPiece = makeMove(source, target);
 						boolean testCheck = testCheck(color); //testa se ainda esta em xeque
-						undoMove(source, target, capturedPiece);
+						undoMove(source, target, capturadoPiece);
 						if (!testCheck) { 
 							return false;
 						}
@@ -225,8 +225,8 @@ public class ChessMatch {
 	
 	
 	// passando as posicioes de acordo com mapeamento do xadrez
-	private void placeNewPiece(char column, int row, ChessPiece piece) {
-		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+	private void placeNewPiece(char column, int row, PecaXadrez piece) {
+		board.placePiece(piece, new PosicaoXadrez(column, row).toPosition());
 		piecesOnTheBoard.add(piece); // acrescenta a peca na lista de pecas no jogo
 		
 	}

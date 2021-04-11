@@ -15,8 +15,6 @@ import chess.Color;
 public class InterfaceUsario {
 	//� preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
 	
-
-	
 	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
 	//cores do texto

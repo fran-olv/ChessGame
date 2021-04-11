@@ -2,10 +2,10 @@ package chess.pieces;
 
 import boardgame.Board;
 import boardgame.Position;
-import chess.ChessPiece;
+import chess.PecaXadrez;
 import chess.Color;
 
-public class Knight extends ChessPiece{
+public class Knight extends PecaXadrez{
 
 	public Knight(Board board, Color color) {
 		super(board, color);
@@ -18,13 +18,13 @@ public class Knight extends ChessPiece{
 
 	// fala se o CAVALO pode se mover para determinada posicao ou nao
 	private boolean canMove(Position position) {
-		ChessPiece p = (ChessPiece)getBoard().piece(position);
-		// verificar se a peca p nao é nula, ou seja existe a peca ali, OU se nao é uma peca adversária. 
+		PecaXadrez p = (PecaXadrez)getBoard().piece(position);
+		// verificar se a peca p nao ï¿½ nula, ou seja existe a peca ali, OU se nao ï¿½ uma peca adversï¿½ria. 
 		return p == null || p.getColor() != getColor();
 	}
 	
 	@Override
-	public boolean[][] possibleMoves() {
+	public boolean[][] MovPossivel() {
 		boolean [][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		
 		//movimentos possiveis do cavalo

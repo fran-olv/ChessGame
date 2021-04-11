@@ -17,14 +17,14 @@ public abstract class Piece {
 		return board;
 	}
 	
-	public abstract boolean[][] possibleMoves();
+	public abstract boolean[][] MovPossivel();
 	
 	public boolean possibleMove(Position position) {
-		return possibleMoves()[position.getRow()][position.getColumn()];
+		return MovPossivel()[position.getRow()][position.getColumn()];
 	}
 	
 	public boolean isThereAnyPossibleMove() {
-		boolean [][] mat = possibleMoves();
+		boolean [][] mat = MovPossivel();
 		for(int i=0; i<mat.length; i++) {
 			for (int j=0; j<mat.length; j++) {
 				if(mat[i][j]) {
