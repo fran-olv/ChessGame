@@ -93,6 +93,7 @@ public class ChessMatch {
 		return capturedPiece;
 	}
 	
+	@SuppressWarnings("unused")
 	private void undoMove(Position source, Position target, Piece capturedPiece) {
 		ChessPiece p = (ChessPiece)board.removePiece(target);
 		p.decreaseMoveCount();
