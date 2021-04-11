@@ -26,18 +26,19 @@ public class ChessPosition {
 	}
 	
 	protected Position toPosition() {
-		return new Position( 8 - row, column - 'a');
+		return new Position( 8 - row, column - 'a');  //linha 8 corresponde a 0 na matriz, linha 7 corresponde a 1 na matriz
 	}
 	
 		
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow()); //forma inversa do acima 
 		
 	}
 	
+	//imprimindo a posição 
 	@Override
 	public String toString() {
-		return "" + column + row;
+		return "" + column + row; // " " forçando o compilador a entender que é uma compilação de strings
 	}
 	
 }

@@ -9,11 +9,11 @@ public class Rook extends ChessPiece{
 
 	public Rook(Board board, Color color) {
 		super(board, color);
-	}
+	} //repassando os dados para o construtor da superclasse
 
 	@Override
 	public String toString() {
-		return "R";
+		return "R"; //o R que vai aparecer na hora de imprimir o tabuleiro, onde tiver a rainha vai aparecer o R
 	}
 
 	@Override

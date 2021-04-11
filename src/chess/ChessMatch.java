@@ -9,6 +9,7 @@ import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
+//possui as regras do jogo 
 public class ChessMatch {
 	
 	//variaveis que controlam o turno e qual jogador está na vez
@@ -20,8 +21,7 @@ public class ChessMatch {
 	private List<Piece> piecesOnTheBoard = new ArrayList<>();
 	private List<Piece> capturedPieces = new ArrayList<>();
 
-	
-	
+
 	
 	private Board board;
 	
@@ -43,6 +43,7 @@ public class ChessMatch {
 		return  currentPlayer;
 	}
 	
+	//retorna a matriz de peças correspondente a partida
 	public ChessPiece[][] getPieces() {
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for (int i=0; i<board.getRows();i++) {
@@ -114,7 +115,7 @@ public class ChessMatch {
 	
 	
 	
-	// passando as posicioes de acordo com mapeamento do xadrez
+	// passando as posicoes de acordo com mapeamento do xadrez
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
 		piecesOnTheBoard.add(piece); // acrescenta a peca na lista de pecas no jogo

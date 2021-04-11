@@ -2,20 +2,23 @@ package boardgame;
 
 public abstract class Piece {
 	protected Position position;// protegida
-	private Board board;
-	
+	private Board board;  
+
+	//contrutores 
 	public Piece(Board board) {
 		this.board = board;
 		position = null; //peca recem criada nao tem posicao
 		
 	}
 
+	//tabuleiro de uso interno 
 	protected Board getBoard() {
 		return board;
 	}
 	
 	public abstract boolean[][] possibleMoves();
 	
+	//vendo se a peca pode ir para uma posicao. gancho com a subclasse.  
 	public boolean possibleMove(Position position) {
 		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
@@ -30,8 +33,6 @@ public abstract class Piece {
 			}
 		}
 		return false;
-	}
-
-	
+	}	
 	
 }

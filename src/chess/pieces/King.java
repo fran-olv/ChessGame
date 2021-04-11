@@ -8,12 +8,12 @@ import chess.Color;
 public class King extends ChessPiece{
 
 	public King(Board board, Color color) {
-		super(board, color);
+		super(board, color); //repassando os dados para o construtor da superclasse
 	}
 	
 	@Override
 	public String toString() {
-		return "K";
+		return "K"; //o K que vai aparecer na hora de imprimir o tabuleiro, onde tiver o rei vai aparecer o K
 	}
 
 	// fala se o rei pode se mover para determinada posicao ou nao

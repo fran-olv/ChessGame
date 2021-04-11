@@ -16,7 +16,7 @@ import chess.Color;
 
 
 public class UI {
-	//é preiso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
+	//é preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash a partir dali)
 	
 	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -30,7 +30,8 @@ public class UI {
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-//cores do fundo
+
+	//cores do fundo
 	public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -40,6 +41,7 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	//limpando a tela fazendo com que o tabuleiro só apareca 1x, vai atualizando 
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
@@ -57,7 +59,7 @@ public class UI {
 		}
 	}
 	
-	// printar a partida com o jogador da vez e o turno, e as pecas que foram capturadas
+	// printa a partida com o jogador da vez e o turno, e as pecas que foram capturadas
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
@@ -69,7 +71,7 @@ public class UI {
 	}
 	
 	
-	//Printa na tela o tabuleiro de xadrez onde as colunas sao mapeadas letras e as linhas por numeros
+	//printa na tela o tabuleiro de xadrez onde as colunas sao mapeadas letras e as linhas por numeros
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -81,7 +83,7 @@ public class UI {
 		System.out.println("  a b c d e f g h");
 	}
 
-	//printa durante a moviemntacao de uma peca os possiveis destinos que essa peca pode ter.
+	//printa durante a movimentacao de uma peca os possiveis destinos que essa peca pode ter.
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");

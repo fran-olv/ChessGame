@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.io.*;
 import java.util.Scanner;
 
 import chess.ChessException;
@@ -20,8 +21,9 @@ public class Program {
 		//Board board = new Board(8,8);
 		
 		Scanner sc  = new Scanner(System.in);
-		ChessMatch chessMatch = new ChessMatch();
+		ChessMatch chessMatch = new ChessMatch(); //instanciando a partida de xadrez
 		List<ChessPiece> captured = new ArrayList<>();
+
 		
 		while (true) {
 			try {
@@ -30,7 +32,9 @@ public class Program {
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
 				System.out.println("Source: ");
-				ChessPosition source = UI.readChessPosition(sc);
+				ChessPosition source = UI.readChessPosition(sc);	// guardar o source no txt
+
+						
 				
 				//posicoes validas sao printadas na tela
 				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
@@ -40,9 +44,9 @@ public class Program {
 				// usuario escolhe 
 				System.out.println();
 				System.out.println("Target: ");
-				ChessPosition target = UI.readChessPosition(sc);
+				ChessPosition target = UI.readChessPosition(sc);		// guardar o target no txt
 				
-				
+							
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 				
 				// se o moviemnto resulta numa captura, a peca capturada é adicionada na lista
@@ -50,6 +54,7 @@ public class Program {
 					captured.add(capturedPiece);
 				}
 			}
+
 			catch(ChessException e){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
