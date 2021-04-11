@@ -1,13 +1,13 @@
 // Bordgame ==> funcao responsavel pelo nosso tabuleiro
 package tabuleiro;
 
-public abstract class Piece {
+public abstract class Peca {
 	//posicao do nosso tabuleiro
 	protected Position position;// protegida
 	private Tabuleiro Tabuleiro;
 	
 	//a posicao nula
-	public Piece(Tabuleiro Tabuleiro) {
+	public Peca(Tabuleiro Tabuleiro) {
 		this.Tabuleiro = Tabuleiro;
 		position = null; //peca recem criada nao tem posicao
 		

@@ -47,17 +47,17 @@ public class InterfaceUsario {
 	public static PosicaoXadrez readPosicaoXadrez(Scanner sc) {
 		try {
 		String s = sc.nextLine();
-		char column = s.charAt(0);
-		int row = Integer.parseInt(s.substring(1));
+		char coluna = s.charAt(0);
+		int linha = Integer.parseInt(s.substring(1));
 		
-		//gravarArq.printf("%c",column);
-		//gravarArq.printf("%c",row);
+		//gravarArq.printf("%c",coluna);
+		//gravarArq.printf("%c",linha);
 		//gravarArq.printf(" para ");
 		
-		return new PosicaoXadrez(column, row);
+		return new PosicaoXadrez(coluna, linha);
 				
 		}
-		catch (RuntimeException e) {
+		catch (RuntimeExcecaoe) {
 			throw new InputMismatchException("Error reading PosicaoXadrez. Valid values are form a1 to h8");
 		}
 		
@@ -88,11 +88,11 @@ public class InterfaceUsario {
 	
 	
 	//Printa na tela o tabuleiro de xadrez onde as colunas sao mapeadas letras e as linhas por numeros
-	public static void printTabuleiro(PecaXadrez[][] pieces) {
-		for (int i = 0; i < pieces.length; i++) {
+	public static void printTabuleiro(PecaXadrez[][] pecas) {
+		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
-			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], false); //pecas nao tem o fundo colorido
+			for (int j = 0; j < pecas.length; j++) {
+				printPiece(pecas[i][j], false); //pecas nao tem o fundo colorido
 			}
 			System.out.println();
 		}
@@ -100,11 +100,11 @@ public class InterfaceUsario {
 	}
 
 	//printa durante a moviemntacao de uma peca os possiveis destinos que essa peca pode ter.
-	public static void printTabuleiro(PecaXadrez[][] pieces, boolean[][] MovPossivel) {
-		for (int i = 0; i < pieces.length; i++) {
+	public static void printTabuleiro(PecaXadrez[][] pecas, boolean[][] MovPossivel) {
+		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
-			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], MovPossivel[i][j]); 
+			for (int j = 0; j < pecas.length; j++) {
+				printPiece(pecas[i][j], MovPossivel[i][j]); 
 			}
 			System.out.println();
 		}
@@ -113,19 +113,19 @@ public class InterfaceUsario {
 	
 	
 	//COLORE AS PE�AS E O TABULEIRO
-	private static void printPiece(PecaXadrez piece, boolean background) {
+	private static void printPiece(PecaXadrez peca, boolean background) {
 		if(background) {
 			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
-		if (piece == null) {
+		if (peca == null) {
             System.out.print("-" + ANSI_RESET);
         }
         else {
-            if (piece.getColor() == Color.WHITE) {
-                System.out.print(ANSI_WHITE + piece + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
+            if (peca.getColor() == Color.WHITE) {
+                System.out.print(ANSI_WHITE + peca + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
             }
             else {
-                System.out.print(ANSI_YELLOW + piece + ANSI_RESET);  //ANSI_BLACK
+                System.out.print(ANSI_YELLOW + peca + ANSI_RESET);  //ANSI_BLACK
             }
         }
         System.out.print(" ");
@@ -136,7 +136,7 @@ public class InterfaceUsario {
 		List<PecaXadrez> white = capturado.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); //filtrando brancas
 		List<PecaXadrez> black = capturado.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList()); //filtrando pretas
 		
-		System.out.println("capturado Pieces: ");
+		System.out.println("capturado pecas: ");
 		
 		System.out.print("White: ");
 		System.out.print(ANSI_WHITE);

@@ -15,9 +15,9 @@ import chess.PosicaoXadrez;
 
 public class Programa {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) thlinhas IOExcecao{
 				////testes////
-		//Position pos = new Position(3, 5);
+		//Posicao pos = new Posicao(3, 5);
 		//System.out.println(pos);
 		
 		//Tabuleiro Tabuleiro = new Tabuleiro(8,8);
@@ -73,7 +73,7 @@ public class Programa {
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}
-			catch(InputMismatchException e){
+			catch(InputMismatchExcecaoe){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}

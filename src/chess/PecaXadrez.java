@@ -2,11 +2,11 @@
 package chess;
 //importando as nossas classes
 import tabuleiro.Tabuleiro;
-import tabuleiro.Piece;
-import tabuleiro.Position;
+import tabuleiro.Peca;
+import tabuleiro.Posicao;
 
 //subclasse de peca
-public abstract class PecaXadrez extends Piece {
+public abstract class PecaXadrez extends Peca {
 	
 	private Color color;
 	private int moveCount; //iniciado com zero por padrao
@@ -23,7 +23,7 @@ public abstract class PecaXadrez extends Piece {
 	
 	//obtendo a posicao da peca de Xadrez 
 	public PosicaoXadrez getPosicaoXadrez() {
-		return PosicaoXadrez.fromPosition(position);
+		return PosicaoXadrez.fromPosition(posicao);
 	}
 	
 	public int getMoveCount() {
@@ -38,8 +38,8 @@ public abstract class PecaXadrez extends Piece {
 		moveCount++;
 	}
 	
-	protected boolean IsThereOpponentPiece(Position position) {
-		PecaXadrez p = (PecaXadrez)getTabuleiro().piece(position);
+	protected boolean IsThereOpponentPiece(Posicao posicao) {
+		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
 		return p != null && p.getColor() != color;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
 	}
 }
