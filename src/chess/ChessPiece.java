@@ -21,6 +21,11 @@ public abstract class ChessPiece extends Piece {
 		return color;
 	}
 	
+	//obtendo a posicao da peca de xadrex 
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
+	}
+	
 	public int getMoveCount() {
 		return moveCount;
 	}
