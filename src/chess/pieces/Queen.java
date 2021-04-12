@@ -13,7 +13,7 @@ public class Queen extends PecaXadrez{
 
 	@Override
 	public String toString() {
-		return "r";
+		return "R";
 	}
 
 	@Override

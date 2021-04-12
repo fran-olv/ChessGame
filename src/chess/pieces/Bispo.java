@@ -1,9 +1,9 @@
-package chess.pecas;
+package chess.pieces;
 
-import tabuleiro.Tabuleiro;
-import tabuleiro.Posicao;
-import chess.PecaXadrez;
-import chess.Cor;
+import TabuleiroXadrez.Tabuleiro;
+import TabuleiroXadrez.Posicao;
+import xadrez.PecaXadrez;
+import xadrez.Cor;
 
 public class Bispo extends PecaXadrez{
 
