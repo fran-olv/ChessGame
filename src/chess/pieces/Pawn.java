@@ -62,7 +62,7 @@ public class Pawn extends ChessPiece {
 			}
 			//peao se movendo 2 linhas para baixo
 			p.setValues(position.getRow() + 2, position.getColumn()); //2 posicao acima
-			Position p2 = new Position(position.getRow()- 1, position.getColumn());
+			Position p2 = new Position(position.getRow()+ 1, position.getColumn());
 			
 			
 			//testa para ver se o peao pode mover 2 casas parra baixo
