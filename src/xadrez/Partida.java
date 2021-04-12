@@ -1,7 +1,7 @@
 //nossa partida de xadrez, aqui estao as nossas regras.
 
 
-package chess;
+package xadrez;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,21 +165,36 @@ public class Partida {
 	}
 	
 	//localiza o rei de uma dada cor
+<<<<<<< Updated upstream:src/chess/Partida.java
 	private PecaXadrez Rei(Cor cor) {
 		List<Piece> list = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getCor() == cor).collect(Collectors.toList()); //procura na lista das pecas em jogo 
+=======
+	private PecaXadrez king(Cor cor) {
+		List<Piece> list = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == cor).collect(Collectors.toList()); //procura na lista das pecas em jogo 
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 		for (Piece p : list) { 
 			if (p instanceof Rei) { // se a peca for uma instancia de rei. 
 				return (PecaXadrez)p; //retorna a peca
 			}
 		}
+<<<<<<< Updated upstream:src/chess/Partida.java
 		throw new IllegalStateException("There is no " + cor + " Rei on the Tabuleiro. Jogo acabou!");
+=======
+		throw new IllegalStateException("There is no " + cor + " king on the Tabuleiro. Jogo acabou!");
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 	}
 	
 	// testar se o jogo esta em xeque (se o rei daquela cor esta em xeque)
 	private boolean testCheck(Cor cor) {
+<<<<<<< Updated upstream:src/chess/Partida.java
 		Posicao kingPosition = Rei(cor).getPosicaoXadrez().toPosition(); //posicao do rei
 		List<Peca> opponentPieces = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getCor() == opponent(cor)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
 		for (Peca p : opponentPieces) { //varre todas as pecas adversarias 
+=======
+		Position kingPosition = king(cor).getPosicaoXadrez().toPosition(); //posicao do rei
+		List<Piece> opponentPieces = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == opponent(cor)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
+		for (Piece p : opponentPieces) { //varre todas as pecas adversarias 
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 			boolean[][] mat = p.MovPossivel(); // se alguma delas tiver suas possibilidades de movimento passando pela casa do REI, esta em xeque
 			if (mat[kingPosition.getLinha()][kingPosition.getColuna()]) {
 				return true;
@@ -201,15 +216,26 @@ public class Partida {
 		if (!testCheck(cor)) {
 			return false;
 		}
+<<<<<<< Updated upstream:src/chess/Partida.java
 		List<Peca> list = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getCor() == cor).collect(Collectors.toList()); //lista de pecas 
 		for (Peca p : list) {
+=======
+		List<Piece> list = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == cor).collect(Collectors.toList()); //lista de pecas 
+		for (Piece p : list) {
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 			boolean[][] mat = p.MovPossivel(); //faz uma matriz com os movimentos possiveis 
 			for (int i=0; i<Tabuleiro.getlinhas(); i++) {
 				for (int j=0; j<Tabuleiro.getcolunas(); j++) {
 					if (mat[i][j]) {
+<<<<<<< Updated upstream:src/chess/Partida.java
 						Posicao source = ((PecaXadrez)p).getPosicaoXadrez().toPosition();
 						Posicao target = new Posicao(i, j);
 						Peca capturadoPiece = makeMove(source, target);
+=======
+						Position source = ((PecaXadrez)p).getPosicaoXadrez().toPosition();
+						Position target = new Position(i, j);
+						Piece capturadoPiece = makeMove(source, target);
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 						boolean testCheck = testCheck(cor); //testa se ainda esta em xeque
 						undoMove(source, target, capturadoPiece);
 						if (!testCheck) { 
@@ -234,6 +260,7 @@ public class Partida {
 	
 	
 	private void initialSetup() { //posicionamento para fazer um xeque mais rapido
+<<<<<<< Updated upstream:src/chess/Partida.java
 		placeNewPiece('a', 1, new Torre(Tabuleiro, Cor.WHITE));
         placeNewPiece('b', 1, new Cavalo(Tabuleiro, Cor.WHITE));
         placeNewPiece('c', 1, new Bispo(Tabuleiro, Cor.WHITE));
@@ -279,4 +306,51 @@ public class Partida {
 		Tabuleiro.placePiece(new Torre(Tabuleiro,Cor.WHITE),new Posicao(2,1));
 		Tabuleiro.placePiece(new Rei(Tabuleiro,Cor.BLACK),new Posicao(0,4));
 		Tabuleiro.placePiece(new Rei(Tabuleiro,Cor.WHITE),new Posicao(7,4)); */
+=======
+		placeNewPiece('a', 1, new Rook(Tabuleiro, Cor.WHITE));
+        placeNewPiece('b', 1, new Knight(Tabuleiro, Cor.WHITE));
+        placeNewPiece('c', 1, new Bishop(Tabuleiro, Cor.WHITE));
+        placeNewPiece('d', 1, new Queen(Tabuleiro, Cor.WHITE));
+        placeNewPiece('e', 1, new King(Tabuleiro, Cor.WHITE));
+        placeNewPiece('f', 1, new Bishop(Tabuleiro, Cor.WHITE));
+        placeNewPiece('g', 1, new Knight(Tabuleiro, Cor.WHITE));
+        placeNewPiece('h', 1, new Rook(Tabuleiro, Cor.WHITE));
+        placeNewPiece('a', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('b', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('c', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('d', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('e', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('f', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('g', 2, new Pawn(Tabuleiro, Cor.WHITE));
+        placeNewPiece('h', 2, new Pawn(Tabuleiro, Cor.WHITE));
+
+        placeNewPiece('a', 8, new Rook(Tabuleiro, Cor.BLACK));
+        placeNewPiece('b', 8, new Knight(Tabuleiro, Cor.BLACK));
+        placeNewPiece('c', 8, new Bishop(Tabuleiro, Cor.BLACK));
+        placeNewPiece('d', 8, new Queen(Tabuleiro, Cor.BLACK));
+        placeNewPiece('e', 8, new King(Tabuleiro, Cor.BLACK));
+        placeNewPiece('f', 8, new Bishop(Tabuleiro, Cor.BLACK));
+        placeNewPiece('g', 8, new Knight(Tabuleiro, Cor.BLACK));
+        placeNewPiece('h', 8, new Rook(Tabuleiro, Cor.BLACK));
+        placeNewPiece('a', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('b', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('c', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('d', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('e', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('f', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('g', 7, new Pawn(Tabuleiro, Cor.BLACK));
+        placeNewPiece('h', 7, new Pawn(Tabuleiro, Cor.BLACK));
+	}
+	
+	/*private void InitialSetup() { 
+		placeNewPiece('b', 6,new Rook(Tabuleiro,Cor.WHITE));
+		placeNewPiece('e', 8,new King(Tabuleiro,Cor.BLACK));
+		placeNewPiece('e', 1,new King(Tabuleiro,Cor.WHITE));
+		
+		
+		//posicoes no sistema de matriz
+		Tabuleiro.placePiece(new Rook(Tabuleiro,Cor.WHITE),new Position(2,1));
+		Tabuleiro.placePiece(new King(Tabuleiro,Cor.BLACK),new Position(0,4));
+		Tabuleiro.placePiece(new King(Tabuleiro,Cor.WHITE),new Position(7,4)); */
+>>>>>>> Stashed changes:src/xadrez/Partida.java
 	}

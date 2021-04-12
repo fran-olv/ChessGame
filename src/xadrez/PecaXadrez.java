@@ -1,5 +1,5 @@
 //nossas pecas
-package chess;
+package xadrez;
 //importando as nossas classes
 import tabuleiro.Tabuleiro;
 import tabuleiro.Peca;
@@ -17,7 +17,11 @@ public abstract class PecaXadrez extends Peca {
 		this.cor = cor;
 	}
 
+<<<<<<< Updated upstream:src/chess/PecaXadrez.java
 	public Cor getCor() {
+=======
+	public Cor getColor() {
+>>>>>>> Stashed changes:src/xadrez/PecaXadrez.java
 		return cor;
 	}
 	
@@ -38,8 +42,14 @@ public abstract class PecaXadrez extends Peca {
 		moveCount++;
 	}
 	
+<<<<<<< Updated upstream:src/chess/PecaXadrez.java
 	protected boolean temPecaOponente(Posicao posicao) {
 		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
 		return p != null && p.getCor() != cor;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
+=======
+	protected boolean IsThereOpponentPiece(Position position) {
+		PecaXadrez p = (PecaXadrez)getTabuleiro().piece(position);
+		return p != null && p.getColor() != cor;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
+>>>>>>> Stashed changes:src/xadrez/PecaXadrez.java
 	}
 }

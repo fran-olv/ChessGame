@@ -1,4 +1,4 @@
-package application;
+package aplicacao;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -6,16 +6,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import chess.Partida;
-import chess.PecaXadrez;
-import chess.PosicaoXadrez;
-import chess.Cor;
+import xadrez.Cor;
+import xadrez.Partida;
+import xadrez.PecaXadrez;
+import xadrez.PosicaoXadrez;
 
 
 public class InterfaceUsario {
-	//eh preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
-	
-
+	//� preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
 	
 	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-cor-in-console-using-system-out-println
 
@@ -49,17 +47,17 @@ public class InterfaceUsario {
 	public static PosicaoXadrez readPosicaoXadrez(Scanner sc) {
 		try {
 		String s = sc.nextLine();
-		char coluna = s.charAt(0);
-		int linha = Integer.parseInt(s.substring(1));
+		char column = s.charAt(0);
+		int row = Integer.parseInt(s.substring(1));
 		
-		//gravarArq.printf("%c",coluna);
-		//gravarArq.printf("%c",linha);
+		//gravarArq.printf("%c",column);
+		//gravarArq.printf("%c",row);
 		//gravarArq.printf(" para ");
 		
-		return new PosicaoXadrez(coluna, linha);
+		return new PosicaoXadrez(column, row);
 				
 		}
-		catch (RuntimeExceptione) {
+		catch (RuntimeException e) {
 			throw new InputMismatchException("Error reading PosicaoXadrez. Valid values are form a1 to h8");
 		}
 		
@@ -90,11 +88,11 @@ public class InterfaceUsario {
 	
 	
 	//Printa na tela o tabuleiro de xadrez onde as colunas sao mapeadas letras e as linhas por numeros
-	public static void printTabuleiro(PecaXadrez[][] pecas) {
-		for (int i = 0; i < pecas.length; i++) {
+	public static void printTabuleiro(PecaXadrez[][] pieces) {
+		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
-			for (int j = 0; j < pecas.length; j++) {
-				printPiece(pecas[i][j], false); //pecas nao tem o fundo colorido
+			for (int j = 0; j < pieces.length; j++) {
+				printPiece(pieces[i][j], false); //pecas nao tem o fundo colorido
 			}
 			System.out.println();
 		}
@@ -102,11 +100,11 @@ public class InterfaceUsario {
 	}
 
 	//printa durante a moviemntacao de uma peca os possiveis destinos que essa peca pode ter.
-	public static void printTabuleiro(PecaXadrez[][] pecas, boolean[][] MovPossivel) {
-		for (int i = 0; i < pecas.length; i++) {
+	public static void printTabuleiro(PecaXadrez[][] pieces, boolean[][] MovPossivel) {
+		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
-			for (int j = 0; j < pecas.length; j++) {
-				printPiece(pecas[i][j], MovPossivel[i][j]); 
+			for (int j = 0; j < pieces.length; j++) {
+				printPiece(pieces[i][j], MovPossivel[i][j]); 
 			}
 			System.out.println();
 		}
@@ -115,19 +113,19 @@ public class InterfaceUsario {
 	
 	
 	//COLORE AS PE�AS E O TABULEIRO
-	private static void printPiece(PecaXadrez peca, boolean background) {
+	private static void printPiece(PecaXadrez piece, boolean background) {
 		if(background) {
 			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
-		if (peca == null) {
+		if (piece == null) {
             System.out.print("-" + ANSI_RESET);
         }
         else {
-            if (peca.getCor() == Cor.WHITE) {
-                System.out.print(ANSI_WHITE + peca + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
+            if (piece.getColor() == Cor.WHITE) {
+                System.out.print(ANSI_WHITE + piece + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
             }
             else {
-                System.out.print(ANSI_YELLOW + peca + ANSI_RESET);  //ANSI_BLACK
+                System.out.print(ANSI_YELLOW + piece + ANSI_RESET);  //ANSI_BLACK
             }
         }
         System.out.print(" ");
@@ -135,10 +133,10 @@ public class InterfaceUsario {
 	
 	//imprimir as pecas capturadas
 	private static void printcapturadoPieces(List<PecaXadrez> capturado) { // utilizacando filtro de lista para implementar 
-		List<PecaXadrez> white = capturado.stream().filter(x -> x.getCor() == Cor.WHITE).collect(Collectors.toList()); //filtrando brancas
-		List<PecaXadrez> black = capturado.stream().filter(x -> x.getCor() == Cor.BLACK).collect(Collectors.toList()); //filtrando pretas
+		List<PecaXadrez> white = capturado.stream().filter(x -> x.getColor() == Cor.WHITE).collect(Collectors.toList()); //filtrando brancas
+		List<PecaXadrez> black = capturado.stream().filter(x -> x.getColor() == Cor.BLACK).collect(Collectors.toList()); //filtrando pretas
 		
-		System.out.println("capturado pecas: ");
+		System.out.println("capturado Pieces: ");
 		
 		System.out.print("White: ");
 		System.out.print(ANSI_WHITE);

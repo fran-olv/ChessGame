@@ -1,4 +1,4 @@
-package application;
+package aplicacao;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,16 +8,16 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import chess.ExceptionXadrez;
-import chess.Partida;
-import chess.PecaXadrez;
-import chess.PosicaoXadrez;
+import xadrez.ExcecaoXadrez;
+import xadrez.Partida;
+import xadrez.PecaXadrez;
+import xadrez.PosicaoXadrez;
 
 public class Programa {
 
-	public static void main(String[] args) thlinhas IOException{
+	public static void main(String[] args) throws IOException {
 				////testes////
-		//Posicao pos = new Posicao(3, 5);
+		//Position pos = new Position(3, 5);
 		//System.out.println(pos);
 		
 		//Tabuleiro Tabuleiro = new Tabuleiro(8,8);
@@ -69,11 +69,11 @@ public class Programa {
 			
 			
 			
-			catch(ExceptionXadrez e){
+			catch(ExcecaoXadrez e){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}
-			catch(InputMismatchExceptione){
+			catch(InputMismatchException e){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}

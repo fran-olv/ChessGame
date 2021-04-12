@@ -1,4 +1,4 @@
-package application;
+package aplicacao;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -15,6 +15,11 @@ import chess.Cor;
 public class InterfaceUsario {
 	//� preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
 	
+<<<<<<< Updated upstream:src/application/InterfaceUsario.java
+=======
+
+	
+>>>>>>> Stashed changes:src/aplicacao/UI.java
 	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-cor-in-console-using-system-out-println
 
 	//cores do texto
@@ -121,8 +126,13 @@ public class InterfaceUsario {
             System.out.print("-" + ANSI_RESET);
         }
         else {
+<<<<<<< Updated upstream:src/application/InterfaceUsario.java
             if (peca.getCor() == Cor.WHITE) {
                 System.out.print(ANSI_WHITE + peca + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
+=======
+            if (piece.getColor() == Cor.WHITE) {
+                System.out.print(ANSI_WHITE + piece + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
+>>>>>>> Stashed changes:src/aplicacao/UI.java
             }
             else {
                 System.out.print(ANSI_YELLOW + peca + ANSI_RESET);  //ANSI_BLACK
@@ -133,8 +143,13 @@ public class InterfaceUsario {
 	
 	//imprimir as pecas capturadas
 	private static void printcapturadoPieces(List<PecaXadrez> capturado) { // utilizacando filtro de lista para implementar 
+<<<<<<< Updated upstream:src/application/InterfaceUsario.java
 		List<PecaXadrez> white = capturado.stream().filter(x -> x.getCor() == Cor.WHITE).collect(Collectors.toList()); //filtrando brancas
 		List<PecaXadrez> black = capturado.stream().filter(x -> x.getCor() == Cor.BLACK).collect(Collectors.toList()); //filtrando pretas
+=======
+		List<PecaXadrez> white = capturado.stream().filter(x -> x.getColor() == Cor.WHITE).collect(Collectors.toList()); //filtrando brancas
+		List<PecaXadrez> black = capturado.stream().filter(x -> x.getColor() == Cor.BLACK).collect(Collectors.toList()); //filtrando pretas
+>>>>>>> Stashed changes:src/aplicacao/UI.java
 		
 		System.out.println("capturado pecas: ");
 		
