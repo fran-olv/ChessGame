@@ -3,12 +3,12 @@ package chess.pecas;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Posicao;
 import chess.PecaXadrez;
-import chess.Color;
+import chess.Cor;
 
 public class Cavalo extends PecaXadrez{
 
-	public Cavalo(Tabuleiro tabuleiro, Color color) {
-		super(Tabuleiro, color);
+	public Cavalo(Tabuleiro tabuleiro, Cor cor) {
+		super(Tabuleiro, cor);
 	}
 	
 	@Override
@@ -17,10 +17,10 @@ public class Cavalo extends PecaXadrez{
 	}
 
 	// fala se o CAVALO pode se mover para determinada posicao ou nao
-	private boolean canMove(Posicao posicao) {
+	private boolean podeMover(Posicao posicao) {
 		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
-		// verificar se a peca p nao � nula, ou seja existe a peca ali, OU se nao � uma peca advers�ria. 
-		return p == null || p.getColor() != getColor();
+		// verificar se a peca p nao eh nula, ou seja existe a peca ali, OU se nao eh uma peca adversaria. 
+		return p == null || p.getCor() != getCor();
 	}
 	
 	@Override
@@ -34,51 +34,51 @@ public class Cavalo extends PecaXadrez{
 		
 		//1. 
 		p.setValores(posicao.getLinha() - 1, posicao.getColuna() -2) ; 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//2. 
 		p.setValores(posicao.getLinha() - 2, posicao.getColuna() -1); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 			
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 			
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 
 		//3. 
 		p.setValores(posicao.getLinha()- 2, posicao.getColuna() +1 ); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 
 		//4. 
 		p.setValores(posicao.getLinha() - 2 , posicao.getColuna() + 1 ); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 
 		//5. 
 		p.setValores(posicao.getLinha() + 1 , posicao.getColuna() +2); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//6. 
 		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() + 1); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//7.   
 		p.setValores(posicao.getLinha() + 2 , posicao.getColuna() - 1); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 				
 
 		//8. 
 		p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 2 ); 
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ 
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		

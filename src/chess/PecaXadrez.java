@@ -8,17 +8,17 @@ import tabuleiro.Posicao;
 //subclasse de peca
 public abstract class PecaXadrez extends Peca {
 	
-	private Color color;
+	private Cor cor;
 	private int moveCount; //iniciado com zero por padrao
 	
 	
-	public PecaXadrez(Tabuleiro Tabuleiro, Color color) {
+	public PecaXadrez(Tabuleiro Tabuleiro, Cor cor) {
 		super(Tabuleiro);
-		this.color = color;
+		this.cor = cor;
 	}
 
-	public Color getColor() {
-		return color;
+	public Cor getCor() {
+		return cor;
 	}
 	
 	//obtendo a posicao da peca de Xadrez 
@@ -38,8 +38,8 @@ public abstract class PecaXadrez extends Peca {
 		moveCount++;
 	}
 	
-	protected boolean IsThereOpponentPiece(Posicao posicao) {
+	protected boolean temPecaOponente(Posicao posicao) {
 		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
-		return p != null && p.getColor() != color;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
+		return p != null && p.getCor() != cor;  //teste se a cor da peca que esta na posicao � igual (minha) ou diferente(oponente)
 	}
 }

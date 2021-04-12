@@ -3,12 +3,12 @@ package chess.pecas;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Posicao;
 import chess.PecaXadrez;
-import chess.Color;
+import chess.Cor;
 
 public class Bispo extends PecaXadrez{
 
-	public Bispo(Tabuleiro Tabuleiro, Color color) {
-		super(Tabuleiro, color);
+	public Bispo(Tabuleiro Tabuleiro, Cor cor) {
+		super(Tabuleiro, cor);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class Bispo extends PecaXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValores(p.getLinha() -1,p.getColuna() - 1);
 		}
-		if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
+		if(getTabuleiro().posicaoExiste(p) && temPecaOponente(p)) { //marcando a posicao que tem uma opeca do oponente
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -40,7 +40,7 @@ public class Bispo extends PecaXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValores(p.getLinha() -1, p.getColuna() + 1);
 		}
-		if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
+		if(getTabuleiro().posicaoExiste(p) && temPecaOponente(p)) { //marcando a posicao que tem uma opeca do oponente
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 				
@@ -50,7 +50,7 @@ public class Bispo extends PecaXadrez{
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValores(p.getLinha() + 1, p.getColuna() +1);
 		}
-		if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
+		if(getTabuleiro().posicaoExiste(p) && temPecaOponente(p)) { //marcando a posicao que tem uma opeca do oponente
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
@@ -60,7 +60,7 @@ public class Bispo extends PecaXadrez{
 					mat[p.getLinha()][p.getColuna()] = true;
 					p.setValores(p.getLinha() + 1, p.getColuna() -1);
 				}
-				if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //marcando a posicao que tem uma opeca do oponente
+				if(getTabuleiro().posicaoExiste(p) && temPecaOponente(p)) { //marcando a posicao que tem uma opeca do oponente
 					mat[p.getLinha()][p.getColuna()] = true;
 				}
 		return mat;

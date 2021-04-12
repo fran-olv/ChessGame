@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 import chess.Partida;
 import chess.PecaXadrez;
 import chess.PosicaoXadrez;
-import chess.Color;
+import chess.Cor;
 
 
 public class InterfaceUsario {
-	//� preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
+	//eh preciso que o terminal seja preto e colorido como o do GITBash (IR na pasta Bin do Projeto e abrir o GitBash apartir dali)
 	
 
 	
-	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+	//codigos retirados de https://stackoverflow.com/questions/5762491/how-to-print-cor-in-console-using-system-out-println
 
 	//cores do texto
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -123,7 +123,7 @@ public class InterfaceUsario {
             System.out.print("-" + ANSI_RESET);
         }
         else {
-            if (peca.getColor() == Color.WHITE) {
+            if (peca.getCor() == Cor.WHITE) {
                 System.out.print(ANSI_WHITE + peca + ANSI_RESET);  //ANSI_YELLOW  //trocar para branca ser amarela e preta ser preta
             }
             else {
@@ -135,8 +135,8 @@ public class InterfaceUsario {
 	
 	//imprimir as pecas capturadas
 	private static void printcapturadoPieces(List<PecaXadrez> capturado) { // utilizacando filtro de lista para implementar 
-		List<PecaXadrez> white = capturado.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); //filtrando brancas
-		List<PecaXadrez> black = capturado.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList()); //filtrando pretas
+		List<PecaXadrez> white = capturado.stream().filter(x -> x.getCor() == Cor.WHITE).collect(Collectors.toList()); //filtrando brancas
+		List<PecaXadrez> black = capturado.stream().filter(x -> x.getCor() == Cor.BLACK).collect(Collectors.toList()); //filtrando pretas
 		
 		System.out.println("capturado pecas: ");
 		

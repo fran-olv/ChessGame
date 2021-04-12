@@ -3,12 +3,12 @@ package chess.pecas;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Posicao;
 import chess.PecaXadrez;
-import chess.Color;
+import chess.Cor;
 
 public class Rei extends PecaXadrez{
 
-	public Rei(Tabuleiro Tabuleiro, Color color) {
-		super(Tabuleiro, color);
+	public Rei(Tabuleiro Tabuleiro, Cor cor) {
+		super(Tabuleiro, cor);
 	}
 	
 	@Override
@@ -17,10 +17,10 @@ public class Rei extends PecaXadrez{
 	}
 
 	// fala se o rei pode se mover para determinada posicao ou nao
-	private boolean canMove(Posicao posicao) {
+	private boolean podeMover(Posicao posicao) {
 		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
 		// verificar se a peca p nao � nula, ou seja existe a peca ali, OU se nao � uma peca advers�ria. 
-		return p == null || p.getColor() != getColor();
+		return p == null || p.getCor() != getCor();
 	}
 	
 	@Override
@@ -34,51 +34,51 @@ public class Rei extends PecaXadrez{
 		
 		//1. acima
 		p.setValores(posicao.getLinha() - 1, posicao.getColuna()); //posicao acima do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//2. abaixo
 		p.setValores(posicao.getLinha() + 1, posicao.getColuna()); //posicao abaixo do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 
 		//3. esquerda
 		p.setValores(posicao.getLinha(), posicao.getColuna() - 1 ); //posicao a esquerda do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 
 		//3. direita
 		p.setValores(posicao.getLinha(), posicao.getColuna() + 1 ); //posicao a direita do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 
 		//3. noroeste = mov em diagonal = 1 para cima e 1 para esquerda  
 		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() - 1); //posicao a noroeste do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//4. nordeste = mov em diagonal = 1 para cima e 1 para direita  
 		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() + 1); //posicao a noroeste do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//4. sudoeste = mov em diagonal = 1 para baixo e 1 para esquerda  
 		p.setValores(posicao.getLinha() + 1 , posicao.getColuna() - 1); //posicao a noroeste do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 				
 
 		//3. sudeste = mov em diagonal =  1 para baixo e 1 para direta
 		p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1 ); //posicao a esquerda do rei
-		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+		if(getTabuleiro().posicaoExiste(p) && podeMover(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
 			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		

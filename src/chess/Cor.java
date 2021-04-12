@@ -1,7 +1,7 @@
 //nosso tipo enumerado do tabuleirp
 package chess;
 
-public enum Color {
+public enum Cor {
 	BLACK,
 	WHITE;
 }
