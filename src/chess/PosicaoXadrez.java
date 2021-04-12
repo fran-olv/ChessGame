@@ -9,14 +9,14 @@ public class PosicaoXadrez {
 	
 	public PosicaoXadrez(char coluna, int linha) {
 		if(coluna < 'a' || coluna > 'h' || linha < 1 | linha > 8) {
-			throw new ExcecaoXadrez(" Error instantiating PosicaoXadrez. Valid values are from a1 from h8. ");
+			throw new ExceptionXadrez(" Error instantiating PosicaoXadrez. Valid values are from a1 from h8. ");
 		}
 		this.coluna = coluna;
 		this.linha = linha;
 	}
 
 
-	public char getColumn() {
+	public char getColuna() {
 		return coluna;
 	}
 
@@ -31,7 +31,7 @@ public class PosicaoXadrez {
 	
 		//converte a posicao da matrix pra posicao do xadrez
 	protected static PosicaoXadrez fromPosition(Posicao posicao) {
-		return new PosicaoXadrez((char)('a' + posicao.getColumn()), 8 - posicao.getLinha());
+		return new PosicaoXadrez((char)('a' + posicao.getColuna()), 8 - posicao.getLinha());
 		
 	}
 	

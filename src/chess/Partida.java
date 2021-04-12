@@ -92,7 +92,7 @@ public class Partida {
 		
 		if ( testCheck(currentPlayer) ) {  //se o jogador entrar em xeque
 			undoMove(source, target, capturadoPiece);
-			throw new ExcecaoXadrez("You can't put yourself in check");
+			throw new ExceptionXadrez("You can't put yourself in check");
 		}
 		//se o oponente entrou em xeque		
 		check = (testCheck(opponent(currentPlayer))) ? true : false; //verdadeiro senao falso
@@ -111,10 +111,10 @@ public class Partida {
 	
 	
 	private Peca makeMove(Posicao source, Posicao target){
-		PecaXadrez p = (PecaXadrez)Tabuleiro.removePiece(source);  //pega a peca de acordo com a posicao
+		PecaXadrez p = (PecaXadrez)Tabuleiro.removePeca(source);  //pega a peca de acordo com a posicao
 		p.increaseMoveCount(); 
-		Peca capturadoPiece = Tabuleiro.removePiece(target); //retira uma possivel peca capturada que esta na posicao de destino
-		Tabuleiro.placePiece(p, target); // coloca no destino a peca que estava na posicao de origem
+		Peca capturadoPiece = Tabuleiro.removePeca(target); //retira uma possivel peca capturada que esta na posicao de destino
+		Tabuleiro.posicaoPeca(p, target); // coloca no destino a peca que estava na posicao de origem
 		
 		if(capturadoPiece != null) { //existe peca capturada
 			piecesOnTheTabuleiro.remove(capturadoPiece); //retira peca da lista do tabuleiro
@@ -126,13 +126,13 @@ public class Partida {
 	
 	//desfaz a jogado. Caso entre em cheque sem querer
 	private void undoMove(Posicao source, Posicao target, Peca capturadoPiece) {
-		PecaXadrez p = (PecaXadrez)Tabuleiro.removePiece(target);
+		PecaXadrez p = (PecaXadrez)Tabuleiro.removePeca(target);
 		p.decreaseMoveCount();
 
-		Tabuleiro.placePiece(p, source);
+		Tabuleiro.posicaoPeca(p, source);
 		
 		if (capturadoPiece != null) {
-			Tabuleiro.placePiece(capturadoPiece, target);
+			Tabuleiro.posicaoPeca(capturadoPiece, target);
 			capturadoPieces.remove(capturadoPiece);
 			piecesOnTheTabuleiro.add(capturadoPiece);
 			}		
@@ -140,22 +140,22 @@ public class Partida {
 	
 	
 	private void validateSourcePosition(Posicao posicao){
-		if(!Tabuleiro.thereIsAPiece(posicao)) {
-			throw new ExcecaoXadrez("There is no pice on source posicao");
+		if(!Tabuleiro.temPeca(posicao)) {
+			throw new ExceptionXadrez("There is no pice on source posicao");
 		}
 		// verificar se o jogador atual tem a mesma cor das pecas que ele quer mover. 
 		if(currentPlayer != ((PecaXadrez)Tabuleiro.peca(posicao)).getColor()) { //necessario fazer downCast porque getColo � proriedade do PecaXadrez nao da classe generica Peca
-			throw new ExcecaoXadrez("The current chosen peca is not yours"); //se tentar mover a peca do advers�rio entra na excecao.
+			throw new ExceptionXadrez("The current chosen peca is not yours"); //se tentar mover a peca do advers�rio entra na excecao.
 		}
 		
-		if(!Tabuleiro.peca(posicao).isThereAnyPossibleMove()) { //verificacao dos movimentos possiveis da peca
-			throw new ExcecaoXadrez("There is no possibles moves for the chosen piecen");
+		if(!Tabuleiro.peca(posicao).MovimentoPossivel()) { //verificacao dos movimentos possiveis da peca
+			throw new ExceptionXadrez("There is no possibles moves for the chosen piecen");
 		}
 	}
 	
 	private void validateTargetPosition(Posicao source, Posicao target){
 		if(!Tabuleiro.peca(source).possibleMove(target)) {
-			throw new ExcecaoXadrez("The choosen peca can't move to target posicao");
+			throw new ExceptionXadrez("The choosen peca can't move to target posicao");
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class Partida {
 		List<Peca> opponentPieces = piecesOnTheTabuleiro.stream().filter(x -> ((PecaXadrez)x).getColor() == opponent(color)).collect(Collectors.toList()); // filtrar a pecas com a cor das pecas do oponente do rei
 		for (Peca p : opponentPieces) { //varre todas as pecas adversarias 
 			boolean[][] mat = p.MovPossivel(); // se alguma delas tiver suas possibilidades de movimento passando pela casa do REI, esta em xeque
-			if (mat[kingPosition.getLinha()][kingPosition.getColumn()]) {
+			if (mat[kingPosition.getLinha()][kingPosition.getColuna()]) {
 				return true;
 			}
 		}
@@ -226,7 +226,7 @@ public class Partida {
 	
 	// passando as posicioes de acordo com mapeamento do xadrez
 	private void placeNewPiece(char coluna, int linha, PecaXadrez peca) {
-		Tabuleiro.placePiece(peca, new PosicaoXadrez(coluna, linha).toPosition());
+		Tabuleiro.posicaoPeca(peca, new PosicaoXadrez(coluna, linha).toPosition());
 		piecesOnTheTabuleiro.add(peca); // acrescenta a peca na lista de pecas no jogo
 		
 	}

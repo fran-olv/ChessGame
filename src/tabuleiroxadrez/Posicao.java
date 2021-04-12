@@ -12,18 +12,18 @@ public class Posicao {
 	public int getLinha() {
 		return linha;
 	}
-	public void setRow(int linha) {
+	public void setLinha(int linha) {
 		this.linha = linha;
 	}
-	public int getColumn() {
+	public int getColuna() {
 		return coluna;
 	}
-	public void setColumn(int coluna) {
+	public void setColuna(int coluna) {
 		this.coluna = coluna;
 	}
 	
 	//atualiza valores da posicao e da coluna
-	public void setValues(int linha, int coluna) {
+	public void setValores(int linha, int coluna) {
 		this.linha = linha;
 		this.coluna = coluna;
 	}

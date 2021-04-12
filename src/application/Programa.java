@@ -8,14 +8,14 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import chess.ExcecaoXadrez;
+import chess.ExceptionXadrez;
 import chess.Partida;
 import chess.PecaXadrez;
 import chess.PosicaoXadrez;
 
 public class Programa {
 
-	public static void main(String[] args) thlinhas IOExcecao{
+	public static void main(String[] args) thlinhas IOException{
 				////testes////
 		//Posicao pos = new Posicao(3, 5);
 		//System.out.println(pos);
@@ -69,11 +69,11 @@ public class Programa {
 			
 			
 			
-			catch(ExcecaoXadrez e){
+			catch(ExceptionXadrez e){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}
-			catch(InputMismatchExcecaoe){
+			catch(InputMismatchExceptione){
 				System.out.println(e.getMessage());
 				sc.nextLine();			
 			}

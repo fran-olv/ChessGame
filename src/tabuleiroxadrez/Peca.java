@@ -3,13 +3,13 @@ package tabuleiro;
 
 public abstract class Peca {
 	//posicao do nosso tabuleiro
-	protected Position position;// protegida
+	protected Posicao posicao;// protegida
 	private Tabuleiro Tabuleiro;
 	
 	//a posicao nula
 	public Peca(Tabuleiro Tabuleiro) {
 		this.Tabuleiro = Tabuleiro;
-		position = null; //peca recem criada nao tem posicao
+		posicao = null; //peca recem criada nao tem posicao
 		
 	}
 	//o tabuleiro so vai ser acessado pelas classe das pecas e tabuleiro
@@ -19,11 +19,11 @@ public abstract class Peca {
 	
 	public abstract boolean[][] MovPossivel();
 	
-	public boolean possibleMove(Position position) {
-		return MovPossivel()[position.getRow()][position.getColumn()];
+	public boolean possibleMove(Posicao posicao) {
+		return MovPossivel()[posicao.getLinha()][posicao.getColuna()];
 	}
 	
-	public boolean isThereAnyPossibleMove() {
+	public boolean MovimentoPossivel() {
 		boolean [][] mat = MovPossivel();
 		for(int i=0; i<mat.length; i++) {
 			for (int j=0; j<mat.length; j++) {

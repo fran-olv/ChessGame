@@ -57,8 +57,8 @@ public class InterfaceUsario {
 		return new PosicaoXadrez(coluna, linha);
 				
 		}
-		catch (RuntimeExcecaoe) {
-			throw new InputMismatchException("Error reading PosicaoXadrez. Valid values are form a1 to h8");
+		catch (RuntimeException) {
+			throw new InputMismatchException("Erro ao ler a posição. São válidos os valores de a1 a h8");
 		}
 		
 	}

@@ -33,53 +33,53 @@ public class Rei extends PecaXadrez{
 		//testes das 8 possiveis direcoes que o Rei pode se mover
 		
 		//1. acima
-		p.setValues(posicao.getLinha() - 1, posicao.getColumn()); //posicao acima do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 1, posicao.getColuna()); //posicao acima do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//2. abaixo
-		p.setValues(posicao.getLinha() + 1, posicao.getColumn()); //posicao abaixo do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna()); //posicao abaixo do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 
 		//3. esquerda
-		p.setValues(posicao.getLinha(), posicao.getColumn() - 1 ); //posicao a esquerda do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha(), posicao.getColuna() - 1 ); //posicao a esquerda do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 
 		//3. direita
-		p.setValues(posicao.getLinha(), posicao.getColumn() + 1 ); //posicao a direita do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha(), posicao.getColuna() + 1 ); //posicao a direita do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 
 		//3. noroeste = mov em diagonal = 1 para cima e 1 para esquerda  
-		p.setValues(posicao.getLinha() - 1 , posicao.getColumn() - 1); //posicao a noroeste do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() - 1); //posicao a noroeste do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//4. nordeste = mov em diagonal = 1 para cima e 1 para direita  
-		p.setValues(posicao.getLinha() - 1 , posicao.getColumn() + 1); //posicao a noroeste do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() + 1); //posicao a noroeste do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//4. sudoeste = mov em diagonal = 1 para baixo e 1 para esquerda  
-		p.setValues(posicao.getLinha() + 1 , posicao.getColumn() - 1); //posicao a noroeste do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 1 , posicao.getColuna() - 1); //posicao a noroeste do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 				
 
 		//3. sudeste = mov em diagonal =  1 para baixo e 1 para direta
-		p.setValues(posicao.getLinha() + 1, posicao.getColumn() + 1 ); //posicao a esquerda do rei
-		if(getTabuleiro().positionExists(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1 ); //posicao a esquerda do rei
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ // se a posicao existe no tabuleiro e o rei pode mover pra ela
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		return mat;

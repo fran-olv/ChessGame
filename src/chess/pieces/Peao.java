@@ -22,66 +22,66 @@ public class Peao extends PecaXadrez {
 		//regraDoPeaoBranco = se move linha para cima ou seja na mtriz � -1 
 		if(getColor() == Color.WHITE) {
 			 //1 posicao para frente
-			p.setValues(posicao.getLinha()- 1, posicao.getColumn());
+			p.setValores(posicao.getLinha()- 1, posicao.getColuna());
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //existe a posicao e esta vazia
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) { //existe a posicao e esta vazia
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			//peao se movendo 2 linhas para frente
-			p.setValues(posicao.getLinha()- 2, posicao.getColumn()); //2 posicao acima
-			Posicao p2 = new Posicao(posicao.getLinha()- 1, posicao.getColumn());
+			p.setValores(posicao.getLinha()- 2, posicao.getColuna()); //2 posicao acima
+			Posicao p2 = new Posicao(posicao.getLinha()- 1, posicao.getColuna());
 			
 			
 			//testa para ver se o peao pode mover 2 casas pra frente 
-			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p) && getTabuleiro().positionExists(p2) && !getTabuleiro().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p) && getTabuleiro().posicaoExiste(p2) && !getTabuleiro().temPeca(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
 			//teste do mov diagonal esquerda quando tiver pe�a adversaria
-			p.setValues(posicao.getLinha() - 1, posicao.getColumn() - 1 );
+			p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1 );
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
 			//teste do mov diagonal direita quando tiver pe�a adversaria
-			p.setValues(posicao.getLinha() - 1, posicao.getColumn() + 1 );
+			p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1 );
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
 		}
 		else { //se nao � branca � preta. OBS: o posicao ROW vai ser + 1 
 			
 			//1 posicao para baixo
-			p.setValues(posicao.getLinha() + 1, posicao.getColumn());
+			p.setValores(posicao.getLinha() + 1, posicao.getColuna());
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p)) { //existe a posicao e esta vazia
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) { //existe a posicao e esta vazia
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			//peao se movendo 2 linhas para baixo
-			p.setValues(posicao.getLinha() + 2, posicao.getColumn()); //2 posicao acima
-			Posicao p2 = new Posicao(posicao.getLinha()- 1, posicao.getColumn());
+			p.setValores(posicao.getLinha() + 2, posicao.getColuna()); //2 posicao acima
+			Posicao p2 = new Posicao(posicao.getLinha()- 1, posicao.getColuna());
 			
 			
 			//testa para ver se o peao pode mover 2 casas parra baixo
-			if(getTabuleiro().positionExists(p) && !getTabuleiro().thereIsAPiece(p) && getTabuleiro().positionExists(p2) && !getTabuleiro().thereIsAPiece(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p) && getTabuleiro().posicaoExiste(p2) && !getTabuleiro().temPeca(p2) && getMoveCount() == 0) { //existe a posicao e esta vazia
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
 			//teste do mov diagonal esquerda quando tiver pe�a adversaria
-			p.setValues(posicao.getLinha() + 1, posicao.getColumn() - 1 );
+			p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1 );
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
 			//teste do mov diagonal direita quando tiver pe�a adversaria
-			p.setValues(posicao.getLinha() + 1, posicao.getColumn() + 1 );
+			p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1 );
 			//testa para ver se o peao pode mover 
-			if(getTabuleiro().positionExists(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
-				mat[p.getLinha()][p.getColumn()] = true;
+			if(getTabuleiro().posicaoExiste(p) && IsThereOpponentPiece(p)) { //existe a posicao e tem uma peca do oponente ali
+				mat[p.getLinha()][p.getColuna()] = true;
 			}
 		}
 		

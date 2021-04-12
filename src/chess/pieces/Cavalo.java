@@ -33,53 +33,53 @@ public class Cavalo extends PecaXadrez{
 		//testes das 8 possiveis direcoes que o Rei pode se mover
 		
 		//1. 
-		p.setValues(posicao.getLinha() - 1, posicao.getColumn() -2) ; 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 1, posicao.getColuna() -2) ; 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//2. 
-		p.setValues(posicao.getLinha() - 2, posicao.getColumn() -1); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 			
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 2, posicao.getColuna() -1); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 			
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 
 		//3. 
-		p.setValues(posicao.getLinha()- 2, posicao.getColumn() +1 ); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha()- 2, posicao.getColuna() +1 ); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 
 		//4. 
-		p.setValues(posicao.getLinha() - 2 , posicao.getColumn() + 1 ); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 2 , posicao.getColuna() + 1 ); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 
 		//5. 
-		p.setValues(posicao.getLinha() + 1 , posicao.getColumn() +2); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 1 , posicao.getColuna() +2); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//6. 
-		p.setValues(posicao.getLinha() - 1 , posicao.getColumn() + 1); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() - 1 , posicao.getColuna() + 1); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		//7.   
-		p.setValues(posicao.getLinha() + 2 , posicao.getColumn() - 1); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 2 , posicao.getColuna() - 1); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}		
 				
 
 		//8. 
-		p.setValues(posicao.getLinha() + 1, posicao.getColumn() - 2 ); 
-		if(getTabuleiro().positionExists(p) && canMove(p)){ 
-			mat[p.getLinha()][p.getColumn()] = true ;
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 2 ); 
+		if(getTabuleiro().posicaoExiste(p) && canMove(p)){ 
+			mat[p.getLinha()][p.getColuna()] = true ;
 		}
 		
 		return mat;

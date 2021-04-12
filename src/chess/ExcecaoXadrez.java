@@ -2,10 +2,10 @@ package chess;
 
 import tabuleiro.TabuleiroException;
 
-public class ExcecaoXadrez extends TabuleiroExcecao{
+public class ExceptionXadrez extends TabuleiroException{
 	private static final long serialVersionUID = 1L;
 	
-	public ExcecaoXadrez(String msg) {
+	public ExceptionXadrez(String msg) {
 		super(msg);
 	}
 	
