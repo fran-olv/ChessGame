@@ -1,6 +1,6 @@
 package xadrez;
 
-import tabuleiro.Posicao;
+import TabuleiroXadrez.Posicao;
 
 public class PosicaoXadrez {
 	private char coluna;

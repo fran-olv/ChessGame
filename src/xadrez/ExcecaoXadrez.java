@@ -1,4 +1,4 @@
-package chess;
+package xadrez;
 
 import tabuleiro.TabuleiroException;
 
