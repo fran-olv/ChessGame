@@ -1,6 +1,8 @@
 package application;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -23,7 +25,8 @@ public class Program {
 		Scanner sc  = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
-		 
+	 
+
 		while (!chessMatch.getCheckMate()) {
 			try {
 				//usuario escolhe apeca que ele quer mover, baseado na posicao em que ela est�
@@ -32,7 +35,8 @@ public class Program {
 				System.out.println();
 				System.out.println("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
-											
+				
+				
 				//posicoes validas sao printadas na tela
 				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
@@ -44,7 +48,6 @@ public class Program {
 				ChessPosition target = UI.readChessPosition(sc);
 				
 				
-				
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 				
 				// se o moviemento resulta numa captura, a peca capturada � adicionada na lista
@@ -54,7 +57,8 @@ public class Program {
 				}
 				
 			}
-						
+			
+			
 			
 			catch(ChessException e){
 				System.out.println(e.getMessage());
