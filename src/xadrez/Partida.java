@@ -229,8 +229,8 @@ public class Partida {
 		posicionandoNovaPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
 		posicionandoNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
 		posicionandoNovaPeca('c', 8, new Bispo(tabuleiro, Cor.PRETO));
-		posicionandoNovaPeca('e', 8, new Rainha(tabuleiro, Cor.PRETO));
-		posicionandoNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO));
+		posicionandoNovaPeca('d', 8, new Rainha(tabuleiro, Cor.PRETO));
+		posicionandoNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
 		posicionandoNovaPeca('f', 8, new Bispo(tabuleiro, Cor.PRETO));
 		posicionandoNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.PRETO));
 		posicionandoNovaPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));

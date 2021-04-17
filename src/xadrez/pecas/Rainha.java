@@ -84,7 +84,7 @@ public class Rainha extends PecaXadrez{
 		}
 				
 		//Movimento para sudeste		
-		p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
 		while(getTabuleiro().existePosicao(p) && !getTabuleiro().existePeca(p)) { //marcando a todas as posicoes que pode se mover
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValores(p.getLinha() + 1, p.getColuna() +1);
@@ -94,7 +94,7 @@ public class Rainha extends PecaXadrez{
 		}
 		
 		//Movimento para sudoeste		
-		p.setValores(posicao.getLinha() + 1 , posicao.getColuna() );
+		p.setValores(posicao.getLinha() + 1 , posicao.getColuna()-1);
 		while(getTabuleiro().existePosicao(p) && !getTabuleiro().existePeca(p)) { //marcando a todas as posicoes que pode se mover
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setValores(p.getLinha() + 1, p.getColuna() -1);

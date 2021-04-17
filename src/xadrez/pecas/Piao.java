@@ -63,7 +63,6 @@ public class Piao extends PecaXadrez {
 			p.setValores(posicao.getLinha() + 2, posicao.getColuna()); //2 posicao acima
 			Posicao p2 = new Posicao(posicao.getLinha()+ 1, posicao.getColuna());
 			
-			
 			//testa para ver se o peao pode mover 2 casas parra baixo
 			if(getTabuleiro().existePosicao(p) && !getTabuleiro().existePeca(p) && getTabuleiro().existePosicao(p2) && !getTabuleiro().existePeca(p2) && getContadorMovimento() == 0) { //existe a posicao e esta vazia
 				mat[p.getLinha()][p.getColuna()] = true;
