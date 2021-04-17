@@ -24,7 +24,7 @@ public class Programa {
 				Interface.limpaTela();
 				Interface.ImprimePartida(partidaXadrez, capturadas);
 				System.out.println();
-				System.out.print("Escolha uma peca de acordo com a posicao dela: ");
+				System.out.print("Escolha uma peca de acordo sua posicao: ");
 				PosicaoXadrex origem = Interface.leituraPosicao(sc);
 				
 				boolean[][] movimentosPossiveis = partidaXadrez.MovimentosPossiveis(origem);
