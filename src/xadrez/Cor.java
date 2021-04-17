@@ -1,5 +1,5 @@
 //nosso tipo enumerado do tabuleirp
-package chess;
+package xadrez;
 
 public enum Cor {
 	PRETO,

@@ -1,5 +1,5 @@
 //nossas pecas
-package chess;
+package xadrez;
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -20,7 +20,7 @@ public abstract class PecaXadrez extends Peca {
 		return cor;
 	}
 	
-	//obtendo a posicao da peca de xadrex 
+	//obtendo a posicao da peca de xadrez 
 	public PosicaoXadrex getPosicaoXadrex() {
 		return PosicaoXadrex.daPosicao(posicao);
 	}

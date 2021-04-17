@@ -31,7 +31,7 @@ public class Tabuleiro {
 	//printando nosso tabuleiro para o usuario visualizar...
 	public Peca peca(int linha, int coluna) {
 		if(!existePosicao(linha,coluna)) {
-			throw new ExcecaoDeTabuleiro("Posicao not on the board");
+			throw new ExcecaoDeTabuleiro("Posicao nao esta no tabuleiro");
 		}
 		
 		return pecas[linha][coluna];

@@ -1,9 +1,9 @@
-package chess.pieces;
+package xadrez.pecas;
 
-import chess.PecaXadrez;
-import chess.Cor;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.Cor;
+import xadrez.PecaXadrez;
 
 public class Piao extends PecaXadrez {
 
@@ -37,22 +37,21 @@ public class Piao extends PecaXadrez {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
-			//teste do mov diagonal esquerda quando tiver pe�a adversaria
+			//teste do mov diagonal esquerda quando tiver peca adversaria
 			p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1 );
 			//testa para ver se o peao pode mover 
 			if(getTabuleiro().existePosicao(p) && ExistePecaOponente(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			
-			//teste do mov diagonal direita quando tiver pe�a adversaria
+			//teste do mov diagonal direita quando tiver peca adversaria
 			p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1 );
 			//testa para ver se o peao pode mover 
 			if(getTabuleiro().existePosicao(p) && ExistePecaOponente(p)) { //existe a posicao e tem uma peca do oponente ali
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
-			
 		}
-		else { //se nao � branca � preta. OBS: o posicao ROW vai ser + 1 
+		else { //se nao for branca eh preta. OBS: o posicao ROW vai ser + 1 
 			
 			//1 posicao para baixo
 			p.setValores(posicao.getLinha() + 1, posicao.getColuna());

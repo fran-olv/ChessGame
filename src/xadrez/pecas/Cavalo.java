@@ -1,9 +1,9 @@
-package chess.pieces;
+package xadrez.pecas;
 
-import chess.PecaXadrez;
-import chess.Cor;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.Cor;
+import xadrez.PecaXadrez;
 
 public class Cavalo extends PecaXadrez{
 

@@ -1,19 +1,19 @@
 //nossa partida de xadrez, aqui estao as nossas regras.
-package chess;
+package xadrez;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import chess.pieces.Bispo;
-import chess.pieces.Rei;
-import chess.pieces.Cavalo;
-import chess.pieces.Piao;
-import chess.pieces.Rainha;
-import chess.pieces.Torre;
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.pecas.Bispo;
+import xadrez.pecas.Cavalo;
+import xadrez.pecas.Piao;
+import xadrez.pecas.Rainha;
+import xadrez.pecas.Rei;
+import xadrez.pecas.Torre;
 
 
 //
@@ -73,22 +73,22 @@ public class Partida {
 		//classe que retorna uma matriz de booleano com os possiveis movimentos da pe�a
 
 	
-	public boolean[][] MovimentosPossiveis(PosicaoXadrex sourcePosition) {
-		Posicao posicao = sourcePosition.paraPosicao();
+	public boolean[][] MovimentosPossiveis(PosicaoXadrex posicaoOrigem) {
+		Posicao posicao = posicaoOrigem.paraPosicao();
 		validaPosicaoOrigem(posicao);
 		return tabuleiro.peca(posicao).movimentoPossivel();
 	}
 	
 	// movimentando as pecas
-	public PecaXadrez facaMovimento(PosicaoXadrex sourcePosition, PosicaoXadrex targetPosition) {
-		Posicao source = sourcePosition.paraPosicao();
-		Posicao target = targetPosition.paraPosicao();
-		validaPosicaoOrigem(source);
-		validaPosicaoDestino(source, target);
-		Peca capturedPeca = movimento(source, target);
+	public PecaXadrez facaMovimento(PosicaoXadrex posicaoOrigem, PosicaoXadrex posicaoDestino) {
+		Posicao origem = posicaoOrigem.paraPosicao();
+		Posicao destino = posicaoDestino.paraPosicao();
+		validaPosicaoOrigem(origem);
+		validaPosicaoDestino(origem, destino);
+		Peca capturedPeca = movimento(origem, destino);
 		
 		if (testeXeque(jogadorAtual)) { //se o jogador entrar em xeque
-			desfazMovimento(source, target, capturedPeca);
+			desfazMovimento(origem, destino, capturedPeca);
 			throw new ExcecaoDeXadrez("Voce nao pode se colocar em xeque");
 		}
 			//se o oponente entrou em xeque		
@@ -104,10 +104,10 @@ public class Partida {
 		return (PecaXadrez)capturedPeca;
 	}
 	
-	private Peca movimento(Posicao source, Posicao target) {
-		Peca p = tabuleiro.removePeca(source);
-		Peca capturedPeca = tabuleiro.removePeca(target);
-		tabuleiro.posicionaPeca(p, target);
+	private Peca movimento(Posicao origem, Posicao destino) {
+		Peca p = tabuleiro.removePeca(origem);
+		Peca capturedPeca = tabuleiro.removePeca(destino);
+		tabuleiro.posicionaPeca(p, destino);
 		
 		if (capturedPeca != null) {
 			pecasEmJogo.remove(capturedPeca);
@@ -117,12 +117,12 @@ public class Partida {
 		return capturedPeca;
 	}
 	
-	private void desfazMovimento(Posicao source, Posicao target, Peca capturedPeca) {
-		Peca p = tabuleiro.removePeca(target);
-		tabuleiro.posicionaPeca(p, source);
+	private void desfazMovimento(Posicao origem, Posicao destino, Peca capturedPeca) {
+		Peca p = tabuleiro.removePeca(destino);
+		tabuleiro.posicionaPeca(p, origem);
 		
 		if (capturedPeca != null) {
-			tabuleiro.posicionaPeca(capturedPeca, target);
+			tabuleiro.posicionaPeca(capturedPeca, destino);
 			pecasCapturadas.remove(capturedPeca);
 			pecasEmJogo.add(capturedPeca);
 		}
@@ -140,8 +140,8 @@ public class Partida {
 		}
 	}
 	
-	private void validaPosicaoDestino(Posicao source, Posicao target) {
-		if (!tabuleiro.peca(source).movimentoPossivel(target)) {
+	private void validaPosicaoDestino(Posicao origem, Posicao destino) {
+		if (!tabuleiro.peca(origem).movimentoPossivel(destino)) {
 			throw new ExcecaoDeXadrez("A peca escolhida nao pode se mover para a posicao de destino");
 		}
 	}
@@ -187,11 +187,11 @@ public class Partida {
 			for (int i=0; i<tabuleiro.getLinhas(); i++) {
 				for (int j=0; j<tabuleiro.getColunas(); j++) {
 					if (mat[i][j]) {
-						Posicao source = ((PecaXadrez)p).getPosicaoXadrex().paraPosicao();
-						Posicao target = new Posicao(i, j);
-						Peca capturedPeca = movimento(source, target);
+						Posicao origem = ((PecaXadrez)p).getPosicaoXadrex().paraPosicao();
+						Posicao destino = new Posicao(i, j);
+						Peca capturedPeca = movimento(origem, destino);
 						boolean testCheck = testeXeque(cor);
-						desfazMovimento(source, target, capturedPeca);
+						desfazMovimento(origem, destino, capturedPeca);
 						if (!testCheck) {
 							return false;
 						}

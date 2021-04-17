@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import chess.PecaXadrez;
-import chess.PosicaoXadrex;
-import chess.Cor;
-import chess.Partida;
+import xadrez.Cor;
+import xadrez.Partida;
+import xadrez.PecaXadrez;
+import xadrez.PosicaoXadrex;
 
 
 public class Interface {

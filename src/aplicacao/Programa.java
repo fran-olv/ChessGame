@@ -5,10 +5,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import chess.ExcecaoDeXadrez;
-import chess.Partida;
-import chess.PecaXadrez;
-import chess.PosicaoXadrex;
+import xadrez.ExcecaoDeXadrez;
+import xadrez.Partida;
+import xadrez.PecaXadrez;
+import xadrez.PosicaoXadrex;
 
 public class Programa {
 
